@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Bush.gd" type="Script" id=1]
+[ext_resource path="res://textures/bushes.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=71]
+extents = Vector2( 32, 32 )
+
+[node name="Bush" type="StaticBody2D" groups=["Bush"]]
+position = Vector2( 352, -32 )
+script = ExtResource( 1 )
+level = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 4
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 71 )

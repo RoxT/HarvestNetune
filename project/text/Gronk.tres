@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://text/WordsR.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+words = [ "Hey, you must be new here. I'm Gronk. Your bike broke down? We don't have a lot of parts here, sorry.", "You might be here awhile, there's some berries you can grab fom he bushes over there. If you water them they regrow pretty fast. Pretty impressive" ]
