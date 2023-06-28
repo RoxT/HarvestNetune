@@ -188,7 +188,7 @@ format = 1
 tile_data = PoolIntArray( 262150, 1, 0 )
 
 [node name="DoorToCave" type="Area2D" parent="." groups=["Doors"]]
-position = Vector2( 607, -324 )
+position = Vector2( 697, -225 )
 script = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true

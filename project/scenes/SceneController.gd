@@ -17,6 +17,7 @@ func _ready() -> void:
 	for e in errs:
 		if e != OK: push_error(str(e))
 	active_scene = $Field
+	$Debug.visible = OS.has_virtual_keyboard()
 
 func _on_talk(messages:Array):
 	dialog.show_dialog(messages)
