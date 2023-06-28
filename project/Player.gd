@@ -53,3 +53,4 @@ func stop_talking():
 func _on_AnimatedSprite_animation_finished() -> void:
 	if animator.animation == "gesture":
 		animator.play("idle")
+
