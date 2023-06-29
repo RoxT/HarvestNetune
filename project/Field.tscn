@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/grasses.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Bush.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/NPC.gd" type="Script" id=6]
 [ext_resource path="res://textures/rpgcritters2-big.png" type="Texture" id=7]
+[ext_resource path="res://Bike.tscn" type="PackedScene" id=8]
 [ext_resource path="res://text/Gronk.tres" type="Resource" id=10]
 [ext_resource path="res://scenes/Roof.gd" type="Script" id=11]
 [ext_resource path="res://lower-tileset.tres" type="TileSet" id=12]
@@ -202,7 +203,11 @@ shape = SubResource( 82 )
 [node name="Sprite" type="Sprite" parent="DoorToCave"]
 texture = ExtResource( 4 )
 
+[node name="Bike" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1958, 569 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 1875, 556 )
 
 [connection signal="body_entered" from="Town/Roof/Area2D" to="Town/Roof" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Town/Roof/Area2D" to="Town/Roof" method="_on_Area2D_body_exited"]
