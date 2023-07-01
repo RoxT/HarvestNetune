@@ -44,12 +44,15 @@ func _setup_scene():
 	for e in errs:
 		if e != OK: push_error(str(e))
 
-func _on_DoorTo_door_entered(target_scene_path:String) -> void:
-	_cleanup_scene()
-	call_deferred("remove_child", active_scene)
-	
-	active_scene = load(target_scene_path).instance()
-	
-	call_deferred("_setup_scene")
-	
-	player = active_scene.get_node("Player")
+func _on_DoorTo_door_entered(target_scene_path:String, coordinates:Vector2) -> void:
+	if !target_scene_path.empty():
+		_cleanup_scene()
+		call_deferred("remove_child", active_scene)
+		
+		active_scene = load(target_scene_path).instance()
+		
+		call_deferred("_setup_scene")
+		
+		player = active_scene.get_node("Player")
+	if coordinates != Vector2.ZERO:
+		player.position = coordinates

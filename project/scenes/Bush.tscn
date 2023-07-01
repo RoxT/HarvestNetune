@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Bush.gd" type="Script" id=1]
 [ext_resource path="res://textures/bushes.png" type="Texture" id=2]
@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id=71]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="OccluderPolygon2D" id=72]
+polygon = PoolVector2Array( -23, -29, -32, 2, -23, 28, 5, 31, 31, 24, 31, -17, 20, -30, -9, -27 )
+
 [node name="Bush" type="StaticBody2D" groups=["Bush"]]
-position = Vector2( 352, -32 )
 script = ExtResource( 1 )
 level = 2
 
@@ -18,3 +20,6 @@ frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 71 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 72 )

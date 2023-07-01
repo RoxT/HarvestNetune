@@ -1,8 +1,9 @@
 extends Area2D
 
 export(String, FILE, "*.tscn") var door_to
+export(Vector2) var warp_to
 
-signal door_entered(target_scene)
+signal door_entered(target_scene, coordinates)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -17,4 +18,5 @@ func _get_configuration_warning() -> String:
 
 
 func _on_DoorToCave_body_entered(_body: Node) -> void:
-	emit_signal("door_entered", door_to)
+	if door_to == null and warp_to == null: push_warning(name + " has no destination")
+	emit_signal("door_entered", door_to, warp_to)
