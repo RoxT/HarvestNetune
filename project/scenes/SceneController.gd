@@ -10,8 +10,8 @@ var active_scene:Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var errs := []
-	errs.append(gronk.connect("talk", self, "_on_talk"))
-	errs.append($Field/Sidon.connect("talk", self, "_on_talk"))
+	for npc in get_tree().get_nodes_in_group("NPC"):
+		errs.append(npc.connect("talk", self, "_on_talk"))
 	errs.append(dialog.connect("talked", self, "_on_talked"))
 	errs.append($Field/DoorToCave.connect("door_entered", self, "_on_DoorTo_door_entered"))
 	for e in errs:

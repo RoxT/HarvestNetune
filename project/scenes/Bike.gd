@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var anim_player := $AnimationPlayer
 onready var sprite := $Sprite
+onready var headlamp := $Light2D
 var player:KinematicBody2D
 
 
@@ -12,6 +13,8 @@ var last_dir
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if get_node_or_null("Debug") != null:
+		$Debug.queue_free()
 	set_physics_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,10 +31,12 @@ func _physics_process(_delta: float) -> void:
 			sprite.play("up")
 			speed = speed + ACCELERATION
 			player.animator.play("bike_up")
+			headlamp.rotation_degrees = -90
 		Vector2.DOWN:
 			sprite.play("down")
 			speed = speed + ACCELERATION
 			player.animator.play("bike_down")
+			headlamp.rotation_degrees = 90
 		Vector2.RIGHT:
 			sprite.play("right")
 			sprite.flip_h = false
@@ -39,6 +44,7 @@ func _physics_process(_delta: float) -> void:
 			player.animator.flip_h = false
 			player.animator.flip_h = false
 			player.animator.play("bike_right")
+			headlamp.rotation_degrees = 0
 		Vector2.LEFT:
 			sprite.play("right")
 			sprite.flip_h = true
@@ -46,6 +52,7 @@ func _physics_process(_delta: float) -> void:
 			player.animator.flip_h = true
 			player.animator.play("bike_right")
 			player.animator.flip_h = true
+			headlamp.rotation_degrees = 180
 			
 		Vector2.ZERO:
 			speed = speed - ACCELERATION

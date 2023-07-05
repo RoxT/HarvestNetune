@@ -1,8 +1,9 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://textures/rogue spritesheet calciumtrice.png" type="Texture" id=2]
 [ext_resource path="res://textures/rogue_on_bike.png" type="Texture" id=3]
+[ext_resource path="res://textures/dither-light.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 2 )
@@ -373,5 +374,10 @@ cast_to = Vector2( 32, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1, -16 )
 shape = SubResource( 68 )
+
+[node name="Light2D" type="Light2D" parent="." groups=["Light"]]
+position = Vector2( 0, -28 )
+texture = ExtResource( 4 )
+energy = 0.8
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

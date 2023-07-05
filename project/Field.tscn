@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/grasses.png" type="Texture" id=2]
@@ -14,8 +14,13 @@
 [ext_resource path="res://lower-tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://text/Sidon.tres" type="Resource" id=13]
 [ext_resource path="res://scenes/DoorTo.gd" type="Script" id=14]
-[ext_resource path="res://textures/spot.png" type="Texture" id=15]
+[ext_resource path="res://textures/spot-light.png" type="Texture" id=15]
 [ext_resource path="res://scenes/FieldSky.gd" type="Script" id=16]
+[ext_resource path="res://textures/table.png" type="Texture" id=17]
+[ext_resource path="res://textures/shovel.png" type="Texture" id=18]
+[ext_resource path="res://scenes/Field.gd" type="Script" id=19]
+[ext_resource path="res://textures/tablet.png" type="Texture" id=20]
+[ext_resource path="res://text/ToolTablet.tres" type="Resource" id=21]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grasses.png 0"
@@ -113,10 +118,17 @@ radius = 18.0
 [sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 256, 160 )
 
+[sub_resource type="RectangleShape2D" id=85]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=86]
+extents = Vector2( 29.5, 30 )
+
 [sub_resource type="RectangleShape2D" id=82]
 extents = Vector2( 24, 27.75 )
 
 [node name="Field" type="Node2D"]
+script = ExtResource( 19 )
 
 [node name="Grasses" type="TileMap" parent="."]
 position = Vector2( 768, -320 )
@@ -205,6 +217,59 @@ tile_set = ExtResource( 12 )
 format = 1
 tile_data = PoolIntArray( 131071, 1, 0, 262150, 1, 0 )
 
+[node name="ToolBench" type="Node2D" parent="Town"]
+
+[node name="Table" type="Sprite" parent="Town/ToolBench"]
+position = Vector2( -1120, 224 )
+texture = ExtResource( 17 )
+hframes = 4
+frame = 1
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Town/ToolBench/Table"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolBench/Table/StaticBody2D3"]
+shape = SubResource( 85 )
+
+[node name="Trowel" type="Sprite" parent="Town/ToolBench/Table" groups=["Tool"]]
+texture = ExtResource( 18 )
+
+[node name="Table2" type="Sprite" parent="Town/ToolBench"]
+position = Vector2( -1120, 288 )
+texture = ExtResource( 17 )
+hframes = 4
+frame = 3
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Town/ToolBench/Table2"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolBench/Table2/StaticBody2D2"]
+shape = SubResource( 85 )
+
+[node name="Table3" type="Sprite" parent="Town/ToolBench"]
+position = Vector2( -1120, 352 )
+texture = ExtResource( 17 )
+hframes = 4
+frame = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Town/ToolBench/Table3"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolBench/Table3/StaticBody2D"]
+shape = SubResource( 85 )
+
+[node name="ToolTablet" type="StaticBody2D" parent="Town" groups=["NPC"]]
+position = Vector2( -1504, 224 )
+script = ExtResource( 6 )
+words_r = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="Town/ToolTablet"]
+texture = ExtResource( 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolTablet"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 86 )
+
 [node name="DoorToCave" type="Area2D" parent="." groups=["Doors"]]
 position = Vector2( 697, -225 )
 script = ExtResource( 14 )
@@ -224,9 +289,9 @@ texture = ExtResource( 4 )
 position = Vector2( 1958, 569 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1052, -199 )
+position = Vector2( 1774, 377 )
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="Light2D" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 1351, -248 )
 texture = ExtResource( 9 )
 color = Color( 0, 0.952941, 1, 1 )
@@ -238,8 +303,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Light2D2" type="Light2D" parent="."]
-visible = false
+[node name="Light2D2" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 1060, -542 )
 texture = ExtResource( 9 )
 color = Color( 0, 0.952941, 1, 1 )
@@ -251,8 +315,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Light2D2"]
 texture = ExtResource( 15 )
 
-[node name="Light2D3" type="Light2D" parent="."]
-visible = false
+[node name="Light2D3" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 522, -316 )
 texture = ExtResource( 9 )
 color = Color( 0, 0.952941, 1, 1 )
@@ -265,7 +328,6 @@ __meta__ = {
 texture = ExtResource( 15 )
 
 [node name="FieldSky" type="CanvasModulate" parent="."]
-color = Color( 0.27451, 0.27451, 0.27451, 1 )
 script = ExtResource( 16 )
 
 [node name="Timer" type="Timer" parent="FieldSky"]
@@ -273,5 +335,6 @@ script = ExtResource( 16 )
 [connection signal="body_entered" from="Town/Roof/Area2D" to="Town/Roof" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Town/Roof/Area2D" to="Town/Roof" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="DoorToCave" to="DoorToCave" method="_on_DoorToCave_body_entered"]
+[connection signal="time_change" from="FieldSky" to="." method="_on_FieldSky_time_change"]
 [connection signal="visibility_changed" from="FieldSky" to="FieldSky" method="_on_FieldSky_visibility_changed"]
 [connection signal="timeout" from="FieldSky/Timer" to="FieldSky" method="_on_Timer_timeout"]

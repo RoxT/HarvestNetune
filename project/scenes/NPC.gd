@@ -1,5 +1,5 @@
 tool
-extends KinematicBody2D
+extends CollisionObject2D
 
 export(Resource) var words_r # Words resource - Array of Strings
 var words:Array
@@ -22,8 +22,8 @@ func flip(value:bool):
 	$Sprite.flip_h = value
 	
 func _get_configuration_warning() -> String:
-	if not self is KinematicBody2D:
-		return "Script must be added to KinematicBody2D"
+	if not self is CollisionObject2D:
+		return "Script must be added to CollisionObject2D"
 	var sprite := get_node_or_null("Sprite") as Sprite
 	if not sprite:
 		return "This node needs a Sprite child node named Sprite"

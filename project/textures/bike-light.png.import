@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spot.png-0154b1bcfd0874ab56081353150356f7.stex"
+path="res://.import/bike-light.png-e5e16206a786f36f864ae0c841d98c8e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/spot.png"
-dest_files=[ "res://.import/spot.png-0154b1bcfd0874ab56081353150356f7.stex" ]
+source_file="res://textures/bike-light.png"
+dest_files=[ "res://.import/bike-light.png-e5e16206a786f36f864ae0c841d98c8e.stex" ]
 
 [params]
 
