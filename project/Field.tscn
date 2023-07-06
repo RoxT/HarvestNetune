@@ -140,9 +140,9 @@ tile_data = PoolIntArray( -262148, 0, 8, -262147, 0, 8, -262146, 0, 8, -262145, 
 position = Vector2( 739, -305 )
 tile_set = SubResource( 6 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 196611, 0, 65537, 196612, 0, 65537, 196613, 0, 65537, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 1, 393216, 0, 1, 393217, 0, 1, 393218, 0, 2, 393219, 0, 2, 393220, 0, 2, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 1, 458752, 0, 1, 458753, 0, 1, 458754, 0, 1, 458755, 0, 2, 458756, 0, 2 )
+tile_data = PoolIntArray( 0, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 1, 393216, 0, 1, 393217, 0, 1, 393218, 0, 2, 393219, 0, 2, 393220, 0, 2, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 1, 458752, 0, 1, 458753, 0, 1, 458754, 0, 1, 458755, 0, 2, 458756, 0, 2 )
 
-[node name="Bush" parent="Bushes" instance=ExtResource( 5 )]
+[node name="Bush" parent="Bushes" groups=["Grows"] instance=ExtResource( 5 )]
 position = Vector2( 350, 6 )
 level = 3
 
@@ -169,6 +169,9 @@ occluder = SubResource( 84 )
 [node name="Gronk" type="KinematicBody2D" parent="." groups=["NPC"]]
 position = Vector2( 928, -464 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 words_r = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="Gronk"]
@@ -183,6 +186,9 @@ shape = SubResource( 70 )
 [node name="Sidon" type="KinematicBody2D" parent="." groups=["NPC"]]
 position = Vector2( 1120, -448 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 words_r = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sidon"]
@@ -296,6 +302,9 @@ position = Vector2( 1351, -248 )
 texture = ExtResource( 9 )
 color = Color( 0, 0.952941, 1, 1 )
 shadow_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Light2D"]
 texture = ExtResource( 15 )

@@ -34,4 +34,7 @@ func next():
 		emit_signal("talked")
 	else:
 		text.add_text(messages.pop_front())
+
+
+		
 	

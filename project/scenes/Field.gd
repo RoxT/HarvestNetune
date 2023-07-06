@@ -13,7 +13,7 @@ func _ready() -> void:
 func _on_FieldSky_time_change(new_time) -> void:
 	match new_time:
 		sky.times.MORNING:
-			pass
+			get_tree().call_group("Grows", "grow")
 		sky.times.DAY:
 			get_tree().call_group("Light", "set_enabled", false)
 		sky.times.EVENING:

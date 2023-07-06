@@ -25,6 +25,10 @@ func harvest():
 		return BERRY
 	else:
 		return null
+		
+func grow():
+	if level < LEVEL.BERRY:
+		set_level(level+1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

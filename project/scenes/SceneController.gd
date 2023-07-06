@@ -56,3 +56,10 @@ func _on_DoorTo_door_entered(target_scene_path:String, coordinates:Vector2) -> v
 		player = active_scene.get_node("Player")
 	if coordinates != Vector2.ZERO:
 		player.position = coordinates
+
+func _on_HUDLayer_famished() -> void:
+	player.famished = true
+
+
+func _on_HUDLayer_hungry() -> void:
+	player.hungry = true

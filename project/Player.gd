@@ -1,12 +1,17 @@
 extends KinematicBody2D
 
 
+const DEFAULT_SPEED := 5
+const FULL_SPEED := 7 
 var speed := 5
 var ray_dist := 32
 onready var animator:AnimatedSprite = $AnimatedSprite
 onready var ray := $RayCast2D
 
 var inventory := {}
+var famished := false
+var hungry := false setget set_hungry
+var list_dir := 0.0
 
 var parent_placeholder:Node2D
 
@@ -21,13 +26,29 @@ func _process(_delta: float) -> void:
 	if parent_placeholder != null: return
 	var x := Input.get_axis("ui_left", "ui_right")
 	var y := Input.get_axis("ui_up", "ui_down")
-	var direction := Vector2(x,y).normalized()
-	move_and_collide(direction*speed)
+	
 	if abs(x) < 0.5 and abs(y) <0.5:
 		animator.play("idle")
 	else:
 		animator.play("walk")
 		animator.flip_h = x < 0
+		if abs(x) > abs(y):
+			if x > 0: 
+				#right
+				y -= list_dir
+			else:
+				#left
+				y += list_dir
+		elif y > 0:
+			#down??
+			x += list_dir
+		else:
+			#up??
+			x -= list_dir
+			
+		var direction := Vector2(x,y).normalized()
+		speed = FULL_SPEED if !famished else DEFAULT_SPEED
+		move_and_collide(direction*speed)
 		ray.cast_to = ray_dist*direction
 
 
@@ -86,3 +107,7 @@ func _on_AnimatedSprite_animation_finished() -> void:
 	if animator.animation == "gesture":
 		animator.play("idle")
 
+func set_hungry(value):
+	if value == true and hungry == false:
+		hungry = true
+		list_dir = rand_range(0.1,0.7)
