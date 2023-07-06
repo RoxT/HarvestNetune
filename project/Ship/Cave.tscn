@@ -1,0 +1,448 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://textures/colony/colony-db32-grounds-ready-resized.png" type="Texture" id=2]
+[ext_resource path="res://textures/whip.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Whip.gd" type="Script" id=4]
+[ext_resource path="res://textures/turtle.png" type="Texture" id=5]
+[ext_resource path="res://scenes/DoorTo.gd" type="Script" id=6]
+[ext_resource path="res://textures/cave_opening.png" type="Texture" id=7]
+[ext_resource path="res://Ship/Cave_tiles.tres" type="TileSet" id=8]
+
+[sub_resource type="TileSet" id=1]
+0/name = "colony-db32-grounds-ready-resized.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 192, 448 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "colony-db32-grounds-ready-resized.png 1"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 192, 192, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "colony-db32-grounds-ready-resized.png 2"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 448, 192, 512 )
+2/tile_mode = 2
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 64, 64 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/priority_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "colony-db32-grounds-ready-resized.png 3"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 320, 448, 192, 512 )
+3/tile_mode = 2
+3/autotile/icon_coordinate = Vector2( 0, 0 )
+3/autotile/tile_size = Vector2( 64, 64 )
+3/autotile/spacing = 0
+3/autotile/occluder_map = [  ]
+3/autotile/navpoly_map = [  ]
+3/autotile/priority_map = [  ]
+3/autotile/z_index_map = [  ]
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "colony-db32-grounds-ready-resized.png 4"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 960, 192, 128 )
+4/tile_mode = 2
+4/autotile/icon_coordinate = Vector2( 0, 0 )
+4/autotile/tile_size = Vector2( 64, 64 )
+4/autotile/spacing = 0
+4/autotile/occluder_map = [  ]
+4/autotile/navpoly_map = [  ]
+4/autotile/priority_map = [  ]
+4/autotile/z_index_map = [  ]
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "colony-db32-grounds-ready-resized.png 5"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 320, 960, 192, 128 )
+5/tile_mode = 2
+5/autotile/icon_coordinate = Vector2( 0, 0 )
+5/autotile/tile_size = Vector2( 64, 64 )
+5/autotile/spacing = 0
+5/autotile/occluder_map = [  ]
+5/autotile/navpoly_map = [  ]
+5/autotile/priority_map = [  ]
+5/autotile/z_index_map = [  ]
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 512, 0, 128, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 640, 0, 128, 64 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 22.5, 19.5 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:shape:extents")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 22.5, 19.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33, 4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "attack"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 33, 4 ), Vector2( 68, -6 ), Vector2( 59, -14 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 3, 0.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 101.8 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 18.3276
+height = 41.3979
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 24, 27.75 )
+
+[node name="Cave" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 1, 1, 1, 0.168627 )
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( -851963, 0, 262146, -851962, 0, 262146, -851961, 0, 262146, -851960, 0, 262146, -851959, 0, 262146, -851958, 0, 262146, -851957, 0, 262146, -720900, 0, 262146, -720899, 0, 262146, -720898, 0, 262146, -720897, 0, 262146, -786432, 0, 262146, -786431, 0, 262146, -786430, 0, 262146, -786429, 0, 262146, -786428, 0, 262146, -786427, 0, 262146, -786426, 0, 196609, -786425, 0, 196609, -786424, 0, 196609, -786423, 0, 196609, -786422, 0, 196609, -786421, 0, 262146, -655364, 0, 262146, -655363, 0, 196609, -655362, 0, 196609, -655361, 0, 196609, -720896, 0, 196609, -720895, 0, 196609, -720894, 0, 196609, -720893, 0, 196609, -720892, 0, 196609, -720891, 0, 196609, -720890, 0, 196609, -720889, 0, 327682, -720888, 0, 327682, -720887, 0, 327682, -720886, 0, 196609, -720885, 0, 262146, -589828, 0, 262146, -589827, 0, 327682, -589826, 0, 327682, -589825, 0, 327682, -655360, 0, 327682, -655359, 0, 327682, -655358, 0, 327682, -655357, 0, 327682, -655356, 0, 327682, -655355, 0, 327682, -655354, 0, 327682, -655353, 0, 327682, -655352, 0, 327682, -655351, 0, 196609, -655350, 0, 196609, -655349, 0, 262146, -524292, 0, 262146, -524291, 0, 327682, -524290, 0, 327682, -524289, 0, 327682, -589824, 0, 327682, -589823, 0, 327682, -589822, 0, 327682, -589821, 0, 327682, -589820, 0, 327682, -589819, 0, 327682, -589818, 0, 327682, -589817, 0, 327682, -589816, 0, 262146, -589815, 0, 262146, -589814, 0, 262146, -589813, 0, 262146, -458756, 0, 262146, -458755, 0, 196609, -458754, 0, 196609, -458753, 0, 327682, -524288, 0, 327682, -524287, 0, 327682, -524286, 0, 327682, -524285, 0, 262146, -524284, 0, 262146, -524283, 0, 327682, -524282, 0, 327682, -524281, 0, 327682, -524280, 0, 262146, -393220, 0, 262146, -393219, 0, 262146, -393218, 0, 196609, -393217, 0, 196609, -458752, 0, 196609, -458751, 0, 196609, -458750, 0, 196609, -458749, 0, 262146, -458748, 0, 262146, -458747, 0, 327682, -458746, 0, 327682, -458745, 0, 262146, -458744, 0, 262146, -393212, 0, 262146, -393211, 0, 393218, -393210, 0, 393218, -393209, 0, 262146, -327676, 0, 262146, -327675, 0, 393218, -327674, 0, 393218, -327673, 0, 262146, -196610, 0, 196610, -196609, 0, 196610, -262144, 0, 196610, -262143, 0, 196610, -262142, 0, 196610, -262141, 0, 196610, -262140, 0, 262146, -262139, 0, 393218, -262138, 0, 393218, -262137, 0, 262146, -131076, 0, 262146, -131075, 0, 262146, -131074, 0, 262146, -131073, 0, 327682, -196608, 0, 327682, -196607, 0, 327682, -196606, 0, 327682, -196605, 0, 327682, -196604, 0, 327682, -196603, 0, 327682, -196602, 0, 327682, -196601, 0, 262146, -196600, 0, 262146, -65540, 0, 262146, -65539, 0, 262146, -65538, 0, 327682, -65537, 0, 327682, -131072, 0, 327682, -131071, 0, 327682, -131070, 0, 327682, -131069, 0, 327682, -131068, 0, 327682, -131067, 0, 327682, -131066, 0, 327682, -131065, 0, 327682, -131064, 0, 262146, -4, 0, 262146, -3, 0, 262146, -2, 0, 327682, -1, 0, 327682, -65536, 0, 327682, -65535, 0, 327682, -65534, 0, 196609, -65533, 0, 196609, -65532, 0, 196609, -65531, 0, 327682, -65530, 0, 327682, -65529, 0, 327682, -65528, 0, 262146, 65532, 0, 262146, 65533, 0, 262146, 65534, 0, 196609, 65535, 0, 327682, 0, 0, 327682, 1, 0, 196609, 2, 0, 196609, 3, 0, 262146, 4, 0, 262146, 5, 0, 262146, 6, 0, 327682, 7, 0, 327682, 8, 0, 262146, 17, 2, 1, 131068, 0, 262146, 131069, 0, 262146, 131070, 0, 196609, 131071, 0, 196609, 65536, 0, 196609, 65537, 0, 196609, 65538, 0, 262146, 65539, 0, 262146, 65540, 0, 262146, 65541, 0, 327682, 65542, 0, 327682, 65543, 0, 327682, 65544, 0, 262146, 196604, 0, 262146, 196605, 0, 262146, 196606, 0, 262146, 196607, 0, 262146, 131072, 0, 262146, 131073, 0, 262146, 131074, 0, 262146, 131075, 0, 262146, 131076, 0, 262146, 131077, 0, 327682, 131078, 0, 327682, 131079, 0, 327682, 131080, 0, 262146, 131081, 0, 196609, 131082, 0, 196609, 131083, 0, 196609, 131084, 0, 196609, 262142, 0, 262146, 196610, 0, 262146, 196611, 0, 262146, 196612, 0, 262146, 196613, 0, 327682, 196614, 0, 327682, 196615, 0, 327682, 196616, 0, 327682, 196617, 0, 327682, 196618, 0, 327682, 196619, 0, 327682, 196620, 0, 196609, 262146, 0, 262146, 262147, 0, 262146, 262148, 0, 262146, 262149, 0, 327682, 262150, 0, 327682, 262151, 0, 327682, 262152, 0, 327682, 262153, 0, 327682, 262154, 0, 196609, 262155, 0, 196609, 262156, 0, 196609, 327682, 0, 262146, 327683, 0, 262146, 327684, 0, 262146, 327685, 0, 327682, 327686, 0, 327682, 327687, 0, 327682, 327688, 0, 196609, 327689, 0, 196609, 327690, 0, 196609, 393219, 0, 262146, 393220, 0, 262146, 393221, 0, 196609, 393222, 0, 196609, 393223, 0, 196609, 393224, 0, 196609 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 36, -98 )
+
+[node name="Whip" type="Area2D" parent="Player"]
+position = Vector2( 0, -32 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player/Whip"]
+frames = SubResource( 8 )
+centered = false
+offset = Vector2( 0, -32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Whip"]
+position = Vector2( 33, 4 )
+scale = Vector2( 3, 0.5 )
+shape = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Whip"]
+autoplay = "attack"
+anims/RESET = SubResource( 10 )
+anims/attack = SubResource( 11 )
+
+[node name="Turtle" type="KinematicBody2D" parent="."]
+position = Vector2( 319, -135 )
+collision_layer = 3
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Turtle"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
+position = Vector2( 0, 5 )
+rotation = 4.69668
+shape = SubResource( 12 )
+
+[node name="DoorToHome" type="Area2D" parent="." groups=["Doors"]]
+position = Vector2( 34, 31 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+door_to = "res://Field.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToHome"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="DoorToHome"]
+texture = ExtResource( 7 )
+
+[node name="DoorUp" type="Area2D" parent="." groups=["Doors"]]
+position = Vector2( 485, -672 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="DoorUp"]
+texture = ExtResource( 7 )
+
+[node name="DoorUp2" type="Area2D" parent="." groups=["Doors"]]
+position = Vector2( 482, 341 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp2"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="DoorUp2"]
+texture = ExtResource( 7 )
+
+[node name="DoorUp3" type="Area2D" parent="." groups=["Doors"]]
+position = Vector2( 155, -484 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorUp3"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="DoorUp3"]
+texture = ExtResource( 7 )
+
+[node name="Plateau" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Plateau"]
+tile_set = ExtResource( 8 )
+format = 1
+tile_data = PoolIntArray( -786426, 2, 1, -786425, 6, 1, -786424, 6, 2, -786423, 6, 3, -786422, 2, 1, -786421, 2, 1, -720893, 2, 1, -720892, 2, 1, -720891, 2, 1, -720890, 2, 1, -720889, 6, 65537, -720888, 6, 65538, -720887, 6, 65539, -720886, 2, 1, -720885, 2, 1, -655358, 6, 1, -655357, 6, 2, -655356, 6, 2, -655355, 6, 3, -655354, 2, 1, -655353, 6, 65537, -655352, 6, 65538, -655351, 6, 65539, -655350, 2, 1, -655349, 2, 1, -589824, 6, 1, -589823, 6, 2, -589822, 6, 65538, -589821, 6, 65538, -589820, 6, 65538, -589819, 6, 65539, -589818, 2, 1, -589817, 6, 65537, -589816, 6, 65538, -589815, 6, 65539, -589814, 2, 1, -589813, 2, 1, -524288, 6, 131073, -524287, 6, 65538, -524286, 6, 65538, -524285, 6, 65538, -524284, 6, 131074, -524283, 6, 131075, -524282, 2, 1, -524281, 6, 65537, -524280, 6, 65538, -524279, 6, 65539, -524278, 2, 1, -524277, 2, 1, -393221, 6, 0, -393219, 6, 196608, -458751, 6, 131073, -458750, 6, 131074, -458749, 6, 131075, -458748, 2, 1, -458747, 2, 1, -458746, 2, 1, -458745, 6, 65537, -458744, 6, 65538, -458743, 6, 65538, -458742, 6, 3, -458741, 2, 1, -327685, 6, 65536, -393215, 2, 1, -393214, 2, 1, -393213, 2, 1, -393212, 2, 1, -393211, 6, 1, -393210, 6, 2, -393209, 6, 65538, -393208, 6, 65538, -393207, 6, 65538, -393206, 6, 65539, -393205, 2, 1, -262149, 6, 131073, -262148, 6, 196610, -262147, 6, 196611, -327679, 2, 1, -327678, 2, 1, -327677, 2, 1, -327676, 2, 1, -327675, 6, 131073, -327674, 6, 65538, -327673, 6, 65538, -327672, 6, 65538, -327671, 6, 65538, -327670, 6, 65539, -327669, 2, 1, -262142, 2, 1, -262141, 2, 1, -262140, 2, 1, -262139, 2, 1, -262138, 6, 65537, -262137, 6, 65538, -262136, 6, 65538, -262135, 6, 65538, -262134, 6, 131075, -262133, 2, 1, -196605, 2, 1, -196604, 2, 1, -196603, 2, 1, -196602, 6, 131073, -196601, 6, 65538, -196600, 6, 65538, -196599, 6, 65539, -196598, 2, 1, -196597, 2, 1, -131067, 2, 1, -131066, 2, 1, -131065, 6, 131073, -131064, 6, 65538, -131063, 6, 65539, -131062, 2, 1, -65530, 2, 1, -65529, 2, 1, -65528, 6, 65537, -65527, 6, 65539, -65526, 2, 1, 6, 2, 1, 7, 2, 1, 8, 6, 131073, 9, 6, 131075, 10, 2, 1, 65542, 2, 1, 65543, 2, 1, 65544, 2, 1, 65545, 2, 1, 65546, 2, 1, 131078, 2, 1, 131079, 2, 1, 131080, 2, 1, 196614, 2, 1, 196615, 2, 1, 196616, 2, 1, 262149, 2, 1, 262150, 2, 1, 262151, 2, 1, 262152, 2, 1, 327685, 2, 1, 327686, 2, 1, 327687, 2, 1, 327688, 2, 1, 393221, 2, 1, 393222, 2, 1, 393223, 2, 1, 393224, 2, 1 )
+
+[node name="DoorDown2" type="Area2D" parent="Plateau" groups=["Doors"]]
+position = Vector2( 155, -484 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+warp_to = Vector2( 155, -484 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateau/DoorDown2"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Plateau/DoorDown2"]
+texture = ExtResource( 7 )
+
+[node name="DoorDown3" type="Area2D" parent="Plateau" groups=["Doors"]]
+position = Vector2( 482, 341 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateau/DoorDown3"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Plateau/DoorDown3"]
+texture = ExtResource( 7 )
+
+[node name="DoorDown" type="Area2D" parent="Plateau" groups=["Doors"]]
+position = Vector2( 487, -673 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plateau/DoorDown"]
+position = Vector2( -1, 3.75 )
+shape = SubResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="Plateau/DoorDown"]
+texture = ExtResource( 7 )
+
+[connection signal="body_entered" from="Player/Whip" to="Player/Whip" method="_on_Whip_body_entered"]
+[connection signal="body_exited" from="Player/Whip" to="Player/Whip" method="_on_Whip_body_exited"]
+[connection signal="body_entered" from="DoorToHome" to="DoorToHome" method="_on_DoorToCave_body_entered"]
+[connection signal="body_entered" from="DoorUp" to="DoorUp" method="_on_DoorToCave_body_entered"]
+[connection signal="body_entered" from="DoorUp2" to="DoorUp2" method="_on_DoorToCave_body_entered"]
+[connection signal="body_entered" from="DoorUp3" to="DoorUp3" method="_on_DoorToCave_body_entered"]
+[connection signal="body_entered" from="Plateau/DoorDown2" to="Plateau/DoorDown2" method="_on_DoorToCave_body_entered"]
+[connection signal="body_entered" from="Plateau/DoorDown3" to="Plateau/DoorDown3" method="_on_DoorToCave_body_entered"]
+[connection signal="body_entered" from="Plateau/DoorDown" to="Plateau/DoorDown" method="_on_DoorToCave_body_entered"]
