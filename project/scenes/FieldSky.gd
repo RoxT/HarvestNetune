@@ -2,7 +2,7 @@ extends CanvasModulate
 
 onready var timer := $Timer
 const CHANGE := 0.2
-export var S_OF_TRANSITION:float = 15.0
+export var S_OF_TRANSITION:float = 5
 const COLOR_TRANSITION := 0.5
 
 enum times {

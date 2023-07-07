@@ -82,6 +82,10 @@ func _unhandled_input(event: InputEvent) -> void:
 						animator.stop()
 					elif target.name == "Tool":
 						tool_in_hand = target.get_parent().pickup_tool(tool_in_hand)
+					elif target.name == "DigSpot":
+						if tool_in_hand == "shovel":
+							target.add_child(load("res://scenes/Bush.tscn").instance())
+							
 			elif animation.begins_with("bike"):
 				var bike = get_parent()
 				ray.cast_to = Vector2(-64, 0)
