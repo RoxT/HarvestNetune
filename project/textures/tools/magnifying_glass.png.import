@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shovel.png-e1794d7c1ee449f3b0a2a59a4ef9b000.stex"
+path="res://.import/magnifying_glass.png-f4b735151413b36977d9b75ba23f06f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/shovel.png"
-dest_files=[ "res://.import/shovel.png-e1794d7c1ee449f3b0a2a59a4ef9b000.stex" ]
+source_file="res://textures/tools/magnifying_glass.png"
+dest_files=[ "res://.import/magnifying_glass.png-f4b735151413b36977d9b75ba23f06f5.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

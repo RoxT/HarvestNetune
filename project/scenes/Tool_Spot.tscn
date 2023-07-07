@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/tools/shovel.png" type="Texture" id=1]
+[ext_resource path="res://scenes/ToolTable.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=85]
+extents = Vector2( 32, 32 )
+
+[node name="Tool_Spot" type="Sprite"]
+position = Vector2( -1120, 224 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+tool_on_bench = "shovel"
+
+[node name="Tool" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tool"]
+shape = SubResource( 85 )

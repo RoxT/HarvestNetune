@@ -12,6 +12,7 @@ var inventory := {}
 var famished := false
 var hungry := false setget set_hungry
 var list_dir := 0.0
+var tool_in_hand := ""
 
 var parent_placeholder:Node2D
 
@@ -79,6 +80,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						$CollisionShape2D.disabled = true
 						target.add_child(self)
 						animator.stop()
+					elif target.name == "Tool":
+						tool_in_hand = target.get_parent().pickup_tool(tool_in_hand)
 			elif animation.begins_with("bike"):
 				var bike = get_parent()
 				ray.cast_to = Vector2(-64, 0)

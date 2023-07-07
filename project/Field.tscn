@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/grasses.png" type="Texture" id=2]
@@ -17,10 +17,13 @@
 [ext_resource path="res://textures/spot-light.png" type="Texture" id=15]
 [ext_resource path="res://scenes/FieldSky.gd" type="Script" id=16]
 [ext_resource path="res://textures/table.png" type="Texture" id=17]
-[ext_resource path="res://textures/shovel.png" type="Texture" id=18]
+[ext_resource path="res://textures/tools/empty.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Field.gd" type="Script" id=19]
 [ext_resource path="res://textures/tablet.png" type="Texture" id=20]
 [ext_resource path="res://text/ToolTablet.tres" type="Resource" id=21]
+[ext_resource path="res://textures/tools/binoculars.png" type="Texture" id=22]
+[ext_resource path="res://textures/tools/bottle.png" type="Texture" id=23]
+[ext_resource path="res://scenes/Tool_Spot.tscn" type="PackedScene" id=24]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grasses.png 0"
@@ -117,9 +120,6 @@ radius = 18.0
 
 [sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 256, 160 )
-
-[sub_resource type="RectangleShape2D" id=85]
-extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=86]
 extents = Vector2( 29.5, 30 )
@@ -231,26 +231,11 @@ texture = ExtResource( 17 )
 hframes = 4
 frame = 1
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Town/ToolBench/Table"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolBench/Table/StaticBody2D3"]
-shape = SubResource( 85 )
-
-[node name="Trowel" type="Sprite" parent="Town/ToolBench/Table" groups=["Tool"]]
-texture = ExtResource( 18 )
-
 [node name="Table2" type="Sprite" parent="Town/ToolBench"]
 position = Vector2( -1120, 288 )
 texture = ExtResource( 17 )
 hframes = 4
 frame = 3
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Town/ToolBench/Table2"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolBench/Table2/StaticBody2D2"]
-shape = SubResource( 85 )
 
 [node name="Table3" type="Sprite" parent="Town/ToolBench"]
 position = Vector2( -1120, 352 )
@@ -258,15 +243,37 @@ texture = ExtResource( 17 )
 hframes = 4
 frame = 2
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Town/ToolBench/Table3"]
-visible = false
+[node name="Tool_Spot" parent="Town/ToolBench" instance=ExtResource( 24 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Town/ToolBench/Table3/StaticBody2D"]
-shape = SubResource( 85 )
+[node name="Tool_Spot2" parent="Town/ToolBench" instance=ExtResource( 24 )]
+position = Vector2( -1120, 288 )
+texture = ExtResource( 23 )
+tool_on_bench = "bottle"
+
+[node name="Tool_Spot3" parent="Town/ToolBench" instance=ExtResource( 24 )]
+position = Vector2( -1120, 352 )
+texture = ExtResource( 22 )
+tool_on_bench = "binoculars"
+
+[node name="ToolBench2" type="Node2D" parent="Town"]
+position = Vector2( -384, 0 )
+
+[node name="Table3" type="Sprite" parent="Town/ToolBench2"]
+position = Vector2( -1120, 352 )
+texture = ExtResource( 17 )
+hframes = 4
+
+[node name="Tool_Spot3" parent="Town/ToolBench2" instance=ExtResource( 24 )]
+position = Vector2( -1120, 352 )
+texture = ExtResource( 18 )
+tool_on_bench = ""
 
 [node name="ToolTablet" type="StaticBody2D" parent="Town" groups=["NPC"]]
 position = Vector2( -1504, 224 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 words_r = ExtResource( 21 )
 
 [node name="Sprite" type="Sprite" parent="Town/ToolTablet"]
