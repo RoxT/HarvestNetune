@@ -13,6 +13,8 @@ var famished := false
 var hungry := false setget set_hungry
 var list_dir := 0.0
 var tool_in_hand := ""
+var item_held_on_head:Node2D
+var direction:Vector2
 
 var parent_placeholder:Node2D
 
@@ -47,7 +49,7 @@ func _process(_delta: float) -> void:
 			#up??
 			x -= list_dir
 			
-		var direction := Vector2(x,y).normalized()
+		direction = Vector2(x,y).normalized()
 		speed = FULL_SPEED if !famished else DEFAULT_SPEED
 		move_and_collide(direction*speed)
 		ray.cast_to = ray_dist*direction
@@ -83,8 +85,24 @@ func _unhandled_input(event: InputEvent) -> void:
 					elif target.name == "Tool":
 						tool_in_hand = target.get_parent().pickup_tool(tool_in_hand)
 					elif target.name == "DigSpot":
-						if tool_in_hand == "shovel":
+						if item_held_on_head != null:
+							remove_child(item_held_on_head)
+							target.add_child(item_held_on_head)
+							item_held_on_head.plant()
+							item_held_on_head = null
+						elif tool_in_hand == "shovel":
 							target.add_child(load("res://scenes/Bush.tscn").instance())
+					elif target.is_in_group("Pickup-able"):
+						var thing = target.pickup(tool_in_hand)
+						if thing != null:
+							add_child(thing)
+							thing.position = Vector2(0, -70)
+							item_held_on_head = thing
+				else:
+					if !item_held_on_head == null:
+						item_held_on_head.toss(direction)
+						item_held_on_head = null
+						animator.play("gesture")
 							
 			elif animation.begins_with("bike"):
 				var bike = get_parent()

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://text/WordsR.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+words = [ "Oh you're still here? Interested in botany? ", "Oh, you eat things like this don't you. Well, lots of them here, and you don't have to water them, this is their ideal environment. Anything over in the garden needs regular watering.", "Hey, if you want, you can dig them up and replant them in the garden. You won't have to walk all the way out here every morning. Oh, don't worry, these ones will regrow. While you're at it, why don't you bring a couple of the blue ones back for me. Hey, DON'T eat them though! The blue ones are academic only, no one on this planet can eat them I bet. ", "There's a shovel in the tool shed by the base. You can use it to dig up a spot in the garden, then use the shovel to dig up one of the bushes. Then carry it back to the garen and plop it in your new hole. Bam, you're done. Oh, don't forget to water it though", "Er, did you get all that?" ]
