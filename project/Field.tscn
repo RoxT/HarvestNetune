@@ -14,7 +14,6 @@
 [ext_resource path="res://lower-tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://text/Bella.tres" type="Resource" id=13]
 [ext_resource path="res://scenes/DoorTo.gd" type="Script" id=14]
-[ext_resource path="res://textures/spot-light.png" type="Texture" id=15]
 [ext_resource path="res://scenes/FieldSky.gd" type="Script" id=16]
 [ext_resource path="res://textures/table.png" type="Texture" id=17]
 [ext_resource path="res://textures/tools/empty.png" type="Texture" id=18]
@@ -26,6 +25,7 @@
 [ext_resource path="res://scenes/Tool_Spot.tscn" type="PackedScene" id=24]
 [ext_resource path="res://textures/Dig-Spot.png" type="Texture" id=25]
 [ext_resource path="res://scenes/PickupBush.tscn" type="PackedScene" id=26]
+[ext_resource path="res://textures/lamp.png" type="Texture" id=27]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grasses.png 0"
@@ -309,7 +309,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Light2D"]
-texture = ExtResource( 15 )
+texture = ExtResource( 27 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -324,7 +324,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Light2D2"]
-texture = ExtResource( 15 )
+texture = ExtResource( 27 )
 
 [node name="Light2D3" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 522, -316 )
@@ -336,7 +336,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Light2D3"]
-texture = ExtResource( 15 )
+texture = ExtResource( 27 )
 
 [node name="Light2D4" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 1455, 514 )
@@ -348,7 +348,9 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="Light2D4"]
-texture = ExtResource( 15 )
+position = Vector2( -324, -826 )
+texture = ExtResource( 27 )
+offset = Vector2( 324, 826 )
 
 [node name="FieldSky" type="CanvasModulate" parent="."]
 script = ExtResource( 16 )

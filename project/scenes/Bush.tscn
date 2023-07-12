@@ -1,28 +1,87 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Bush.gd" type="Script" id=1]
 [ext_resource path="res://textures/bushes.png" type="Texture" id=2]
-
-[sub_resource type="RectangleShape2D" id=71]
-extents = Vector2( 32, 32 )
+[ext_resource path="res://textures/plant_explode.png" type="Texture" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=72]
 polygon = PoolVector2Array( -23, -29, -32, 2, -23, 28, 5, 31, 31, 24, 31, -17, 20, -30, -9, -27 )
 
-[node name="Bush" type="StaticBody2D" groups=["Bush", "Grows"]]
+[sub_resource type="RectangleShape2D" id=71]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="Animation" id=73]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=74]
+resource_name = "toss"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 106.667, -64 ), Vector2( 213.333, 64 ) ]
+}
+
+[node name="Bush" type="StaticBody2D" groups=["Bush", "Grows", "Pickup-able"]]
 script = ExtResource( 1 )
 level = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-centered = false
 hframes = 4
 frame = 3
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
+occluder = SubResource( 72 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 32, 32 )
 shape = SubResource( 71 )
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2( 31, 32 )
-occluder = SubResource( 72 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 73 )
+anims/toss = SubResource( 74 )

@@ -4,7 +4,7 @@ extends KinematicBody2D
 const DEFAULT_SPEED := 5
 const FULL_SPEED := 7 
 var speed := 5
-var ray_dist := 32
+var ray_dist := 64
 onready var animator:AnimatedSprite = $AnimatedSprite
 onready var ray := $RayCast2D
 
@@ -62,9 +62,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				ray.force_raycast_update()
 				var target:Node = ray.get_collider()
 				if target != null:
-					if target.is_in_group("Bush"):
+					if target.is_in_group("Pickup-able") && tool_in_hand == target.tool_required:
+						var thing = target.pickup(tool_in_hand)
+						if thing != null:
+							add_child(thing)
+							thing.position = Vector2(0, -70)
+							item_held_on_head = thing
+					elif target.is_in_group("Bush"):
 						animator.play("gesture", true)
-						var item:String = target.harvest()
+						var item = target.harvest()
 						if item != null:
 							if inventory.has(item):
 								inventory[item] += 1
@@ -92,12 +98,6 @@ func _unhandled_input(event: InputEvent) -> void:
 							item_held_on_head = null
 						elif tool_in_hand == "shovel":
 							target.add_child(load("res://scenes/Bush.tscn").instance())
-					elif target.is_in_group("Pickup-able"):
-						var thing = target.pickup(tool_in_hand)
-						if thing != null:
-							add_child(thing)
-							thing.position = Vector2(0, -70)
-							item_held_on_head = thing
 				else:
 					if !item_held_on_head == null:
 						item_held_on_head.toss(direction)
