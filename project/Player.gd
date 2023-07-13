@@ -18,6 +18,9 @@ var direction:Vector2
 
 var parent_placeholder:Node2D
 
+signal ate
+signal tool_picked_up(tool_name)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -62,7 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				ray.force_raycast_update()
 				var target:Node = ray.get_collider()
 				if target != null:
-					if target.is_in_group("Pickup-able") && tool_in_hand == target.tool_required:
+					if target.is_in_group("Pickup-able") && tool_in_hand == target.tool_required && item_held_on_head == null:
 						var thing = target.pickup(tool_in_hand)
 						if thing != null:
 							add_child(thing)
@@ -72,6 +75,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						animator.play("gesture", true)
 						var item = target.harvest()
 						if item != null:
+							if item == "BERRY":
+								emit_signal("ate")
 							if inventory.has(item):
 								inventory[item] += 1
 							else:
@@ -90,7 +95,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						animator.stop()
 					elif target.name == "Tool":
 						tool_in_hand = target.get_parent().pickup_tool(tool_in_hand)
-					elif target.name == "DigSpot":
+						emit_signal("tool_picked_up", tool_in_hand)
+					elif target.name.begins_with("DigSpot"):
 						if item_held_on_head != null:
 							remove_child(item_held_on_head)
 							target.add_child(item_held_on_head)
@@ -136,3 +142,6 @@ func set_hungry(value):
 	if value == true and hungry == false:
 		hungry = true
 		list_dir = rand_range(0.1,0.7)
+	if value == false and hungry == true:
+		hungry = false
+		list_dir = rand_range(0.0, 0.0)

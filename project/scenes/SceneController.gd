@@ -4,6 +4,7 @@ extends Node2D
 onready var gronk := $Field/Gronk
 onready var dialog := $DialogLayer
 onready var player := $Field/Player
+onready var HUD := $HUDLayer
 
 var active_scene:Node2D
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 		errs.append(npc.connect("talk", self, "_on_talk"))
 	errs.append(dialog.connect("talked", self, "_on_talked"))
 	errs.append($Field/DoorToCave.connect("door_entered", self, "_on_DoorTo_door_entered"))
+	errs.append_array(connect_player())
 	for e in errs:
 		if e != OK: push_error(str(e))
 	active_scene = $Field
@@ -28,6 +30,7 @@ func _on_talked():
 func _cleanup_scene():
 	get_tree().call_group("NPC", "disconnect", "talk", self, "_on_talk")
 	get_tree().call_group("Door", "disconnect", "door_entered", self, "_on_DoorTo_door_entered")
+	connect_player(true)
 	
 func _setup_scene():
 	add_child(active_scene)
@@ -41,8 +44,10 @@ func _setup_scene():
 	for n in get_tree().get_nodes_in_group("Doors"):
 		errs.append(n.connect("door_entered", self, "_on_DoorTo_door_entered"))
 		print(n.name + " connected from " + active_scene.name)
+	errs.append_array(connect_player())
 	for e in errs:
 		if e != OK: push_error(str(e))
+	
 
 func _on_DoorTo_door_entered(target_scene_path:String, coordinates:Vector2) -> void:
 	if !target_scene_path.empty():
@@ -57,9 +62,25 @@ func _on_DoorTo_door_entered(target_scene_path:String, coordinates:Vector2) -> v
 	if coordinates != Vector2.ZERO:
 		player.position = coordinates
 
-func _on_HUDLayer_famished() -> void:
-	player.famished = true
+func _on_HUDLayer_famished(fell_below:bool) -> void:
+	player.famished = fell_below
 
 
-func _on_HUDLayer_hungry() -> void:
-	player.hungry = true
+func _on_HUDLayer_hungry(fell_below:bool) -> void:
+	player.hungry = fell_below
+
+func _on_ate():
+	HUD.ate()
+	
+func _on_tool_picked_up(tool_name:String):
+	HUD.tool_picked_up(tool_name)
+	
+func connect_player(disconnect:=false)->Array:
+	var errs := []
+	if disconnect:
+		player.disconnect("ate", self, "_on_ate")
+		player.disconnect("tool_picked_up", self, "_on_tool_picked_up")
+	else:
+		errs.append(player.connect("ate", self, "_on_ate"))
+		errs.append(player.connect("tool_picked_up", self, "_on_tool_picked_up"))
+	return errs

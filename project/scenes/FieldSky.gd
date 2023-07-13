@@ -1,6 +1,7 @@
 extends CanvasModulate
 
 onready var timer := $Timer
+onready var music := $AudioStreamPlayer
 const CHANGE := 0.2
 export var S_OF_TRANSITION:float = 15
 const COLOR_TRANSITION := 0.5
@@ -50,6 +51,9 @@ func is_next()->bool:
 func reset():
 	s_so_far = 0
 	time = (time+1)%times.size()
+	if !music.is_playing():
+		if randi() % 4 < 2:
+			music.play()
 	emit_signal("time_change", time)
 
 func _on_FieldSky_visibility_changed() -> void:
@@ -58,3 +62,7 @@ func _on_FieldSky_visibility_changed() -> void:
 	else:
 		timer.stop()
 		
+
+
+func _on_AudioStreamPlayer_finished() -> void:
+	music.stop()
