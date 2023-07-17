@@ -381,4 +381,8 @@ position = Vector2( 0, -28 )
 texture = ExtResource( 4 )
 energy = 0.8
 
+[node name="Pause" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Pause" to="." method="_on_Pause_timeout"]

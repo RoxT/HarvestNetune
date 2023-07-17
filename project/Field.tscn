@@ -346,7 +346,7 @@ centered = false
 position = Vector2( 1958, 569 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1019, 4 )
+position = Vector2( 2176, 960 )
 
 [node name="Gronk" type="KinematicBody2D" parent="." groups=["NPC"]]
 position = Vector2( 928, -464 )

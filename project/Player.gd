@@ -145,3 +145,11 @@ func set_hungry(value):
 	if value == false and hungry == true:
 		hungry = false
 		list_dir = rand_range(0.0, 0.0)
+		
+func pause(animation:String, time:int):
+	animator.animation = animation
+	$Pause.start(time)
+
+
+func _on_Pause_timeout() -> void:
+	animator.play("idle")
