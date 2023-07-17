@@ -286,7 +286,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -295,36 +295,36 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 0, 0, 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=15]
 resource_name = "tranistion"
-tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.0470588, 0, 0.0392157, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "toggle_level"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1.62451, 2 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0.0117647, 0, 0.0509804, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
 [node name="Cave" type="Node2D"]
@@ -367,7 +367,6 @@ shape = SubResource( 13 )
 texture = ExtResource( 7 )
 
 [node name="Plateau" type="Node2D" parent="."]
-visible = false
 
 [node name="ShipTileMap" type="TileMap" parent="Plateau"]
 tile_set = ExtResource( 8 )
@@ -377,7 +376,7 @@ tile_data = PoolIntArray( -917509, 2, 1, -917508, 2, 1, -917507, 2, 1, -917506, 
 [node name="Doors" type="Node2D" parent="."]
 
 [node name="BackDoor" type="Area2D" parent="Doors"]
-position = Vector2( 485, -672 )
+position = Vector2( 503, -679 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -439,11 +438,16 @@ autoplay = "attack"
 anims/RESET = SubResource( 10 )
 anims/attack = SubResource( 11 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 14 )
 anims/tranistion = SubResource( 15 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
 
 [connection signal="body_entered" from="DoorToHome" to="DoorToHome" method="_on_DoorToCave_body_entered"]
 [connection signal="body_entered" from="Player/Whip" to="Player/Whip" method="_on_Whip_body_entered"]

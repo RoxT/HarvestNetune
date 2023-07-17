@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _on_DoorUp_body_entered(body: Node, door:Area2D) -> void:
 	if body.name == "Player":
-		player.pause("bike_up", 1)
+		player.pause("portal", 0.7)
 		$AnimationPlayer.play("tranistion")
 	last_door = door
 
@@ -29,8 +29,10 @@ func toggle_level():
 	if cave.visible:
 		cave.hide()
 		plataeu.show()
+		player.light(false)
 	else:
 		cave.show()
 		plataeu.hide()
+		player.light()
 	player.position = last_door.position - Vector2(0, -32)
 	

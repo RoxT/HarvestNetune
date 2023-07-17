@@ -28,7 +28,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if animator.animation == "gesture": return
+	if animator.animation == "gesture" or animator.animation == "portal": return
 	if parent_placeholder != null: return
 	var x := Input.get_axis("ui_left", "ui_right")
 	var y := Input.get_axis("ui_up", "ui_down")
@@ -146,8 +146,11 @@ func set_hungry(value):
 		hungry = false
 		list_dir = rand_range(0.0, 0.0)
 		
-func pause(animation:String, time:int):
-	animator.animation = animation
+func light(on:=true):
+	$Light2D.enabled = on
+		
+func pause(animation:String, time:float):
+	animator.play(animation)
 	$Pause.start(time)
 
 
