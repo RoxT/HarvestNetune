@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Field.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/DialogLayer.gd" type="Script" id=2]
@@ -6,6 +6,15 @@
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/HUDLayer.gd" type="Script" id=5]
 [ext_resource path="res://textures/tools/bone_femur.png" type="Texture" id=6]
+[ext_resource path="res://textures/tools/envelope.png" type="Texture" id=7]
+[ext_resource path="res://Hud/InventoryContainer.gd" type="Script" id=8]
+
+[sub_resource type="InputEventAction" id=1]
+action = "toggle_menu"
+pressed = true
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="SceneController" type="Node2D"]
 script = ExtResource( 3 )
@@ -67,6 +76,26 @@ position = Vector2( 26, 52 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 
+[node name="InventoryButton" type="Button" parent="HUDLayer"]
+margin_left = 830.0
+margin_top = 35.0
+margin_right = 921.0
+margin_bottom = 57.0
+toggle_mode = true
+shortcut = SubResource( 2 )
+text = "Inventory"
+icon = ExtResource( 7 )
+
+[node name="InventoryContainer" type="VBoxContainer" parent="HUDLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -193.0
+margin_top = 60.0
+margin_right = -102.0
+margin_bottom = 100.0
+script = ExtResource( 8 )
+
 [connection signal="famished" from="HUDLayer" to="." method="_on_HUDLayer_famished"]
 [connection signal="hungry" from="HUDLayer" to="." method="_on_HUDLayer_hungry"]
 [connection signal="timeout" from="HUDLayer/Food/Timer" to="HUDLayer" method="_on_Food_Timer_timeout"]
+[connection signal="toggled" from="HUDLayer/InventoryButton" to="." method="_on_InventoryButton_toggled"]

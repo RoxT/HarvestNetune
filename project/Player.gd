@@ -15,10 +15,12 @@ var list_dir := 0.0
 var tool_in_hand := ""
 var item_held_on_head:Node2D
 var direction:Vector2
+var pause_override := false
 
 var parent_placeholder:Node2D
 
 signal ate
+signal add_to_inventory(item)
 signal tool_picked_up(tool_name)
 
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +30,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if animator.animation == "gesture" or animator.animation == "portal": return
+	if pause_override || animator.animation == "gesture" or animator.animation == "portal": return
 	if parent_placeholder != null: return
 	var x := Input.get_axis("ui_left", "ui_right")
 	var y := Input.get_axis("ui_up", "ui_down")
@@ -59,6 +61,7 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if pause_override: return
 	if event.is_action_pressed("ui_select"):
 			var animation := animator.animation
 			if animation == "idle" or animation == "walk":
@@ -77,14 +80,15 @@ func _unhandled_input(event: InputEvent) -> void:
 						if item != null:
 							if item == "BERRY":
 								emit_signal("ate")
-							if inventory.has(item):
-								inventory[item] += 1
-							else:
-								inventory[item] = 1
+							emit_signal("add_to_inventory", item)
 					elif target.is_in_group("NPC"):
 						animator.play("talk")
 						target.flip(target.position.x > position.x)
 						target.talk()
+					elif target.is_in_group("Collectable"):
+						animator.play("gesture", true)
+						emit_signal("add_to_inventory", target.name)
+						target.queue_free()
 					elif target.name == "Bike":
 						target.start()
 						parent_placeholder = get_parent()

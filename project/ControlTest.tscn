@@ -1,0 +1,27 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+focus_neighbour_bottom = NodePath("../Button2")
+text = "Eat Berries"
+
+[node name="Button2" type="Button" parent="."]
+margin_top = 45.0
+margin_right = 81.0
+margin_bottom = 65.0
+focus_neighbour_top = NodePath("../Button")
+text = "Flashlight"
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 2.0
+margin_top = 88.0
+margin_right = 83.0
+margin_bottom = 108.0
+focus_neighbour_top = NodePath("../Button")
+disabled = true
+text = "Gear"

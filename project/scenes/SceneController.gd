@@ -8,6 +8,8 @@ onready var HUD := $HUDLayer
 
 var active_scene:Node2D
 
+var inventory := {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var errs := []
@@ -80,7 +82,24 @@ func connect_player(disconnect:=false)->Array:
 	if disconnect:
 		player.disconnect("ate", self, "_on_ate")
 		player.disconnect("tool_picked_up", self, "_on_tool_picked_up")
+		player.disconnect("add_to_inventory", self, "_on_add_to_inventory")
 	else:
 		errs.append(player.connect("ate", self, "_on_ate"))
 		errs.append(player.connect("tool_picked_up", self, "_on_tool_picked_up"))
+		errs.append(player.connect("add_to_inventory", self, "_on_add_to_inventory"))
 	return errs
+	
+func _on_add_to_inventory(item:String):
+	if inventory.has(item):
+		inventory[item] += 1
+	else:
+		inventory[item] = 1
+
+
+func _on_InventoryButton_toggled(button_pressed: bool) -> void:
+	player.pause_override = button_pressed
+	var container := $HUDLayer/InventoryContainer
+	if button_pressed:
+		container.inventory = inventory
+	else:
+		container.inventory = {}
