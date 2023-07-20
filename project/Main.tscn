@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Field.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/DialogLayer.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://textures/tools/bone_femur.png" type="Texture" id=6]
 [ext_resource path="res://textures/tools/envelope.png" type="Texture" id=7]
 [ext_resource path="res://Hud/InventoryContainer.gd" type="Script" id=8]
+[ext_resource path="res://resources/inventory.tres" type="Theme" id=9]
 
 [sub_resource type="InputEventAction" id=1]
 action = "toggle_menu"
@@ -93,6 +94,7 @@ margin_left = -193.0
 margin_top = 60.0
 margin_right = -102.0
 margin_bottom = 100.0
+theme = ExtResource( 9 )
 script = ExtResource( 8 )
 
 [connection signal="famished" from="HUDLayer" to="." method="_on_HUDLayer_famished"]

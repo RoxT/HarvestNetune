@@ -1,6 +1,8 @@
 tool
 extends Sprite
 
+onready var tooltip := $ToolTip/Label
+
 const PATH := "res://textures/tools/%s.png"
 
 export(String) var tool_on_bench setget set_tool
@@ -22,6 +24,8 @@ func set_tool(value:String):
 	else:
 		texture = load(PATH % "empty")
 		tool_on_bench = value
+	if tooltip != null:
+		tooltip.text = value
 		
 func pickup_tool(new_tool)->String:
 	var old_tool = tool_on_bench

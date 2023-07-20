@@ -218,7 +218,7 @@ texture = ExtResource( 4 )
 [node name="Light2D" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 1351, -248 )
 texture = ExtResource( 9 )
-color = Color( 0, 0.952941, 1, 1 )
+color = Color( 0.52549, 0.796078, 1, 1 )
 shadow_enabled = true
 __meta__ = {
 "_edit_lock_": true
@@ -257,7 +257,8 @@ texture = ExtResource( 27 )
 [node name="Light2D4" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 1455, 514 )
 texture = ExtResource( 9 )
-color = Color( 0, 0.952941, 1, 1 )
+color = Color( 0.52549, 0.796078, 1, 1 )
+energy = 0.7
 shadow_enabled = true
 __meta__ = {
 "_edit_lock_": true
