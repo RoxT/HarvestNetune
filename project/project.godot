@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "StaticBody2D",
+"class": "Bush",
+"language": "GDScript",
+"path": "res://scenes/Bush.gd"
+}, {
 "base": "Resource",
 "class": "WordsR",
 "language": "GDScript",
 "path": "res://text/WordsR.gd"
 } ]
 _global_script_class_icons={
+"Bush": "",
 "WordsR": ""
 }
 

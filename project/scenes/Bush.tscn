@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Bush.gd" type="Script" id=1]
-[ext_resource path="res://textures/bushes.png" type="Texture" id=2]
+[ext_resource path="res://textures/bushes/redberrybush.png" type="Texture" id=2]
 [ext_resource path="res://textures/plant_explode.png" type="Texture" id=3]
-
-[sub_resource type="OccluderPolygon2D" id=72]
-polygon = PoolVector2Array( -23, -29, -32, 2, -23, 28, 5, 31, 31, 24, 31, -17, 20, -30, -9, -27 )
 
 [sub_resource type="RectangleShape2D" id=71]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="OccluderPolygon2D" id=72]
+polygon = PoolVector2Array( -23, -29, -32, 2, -23, 28, 5, 31, 31, 24, 31, -17, 20, -30, -9, -27 )
 
 [sub_resource type="Animation" id=73]
 length = 0.001
@@ -71,6 +71,9 @@ tracks/2/keys = {
 script = ExtResource( 1 )
 level = 2
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 71 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 4
@@ -78,9 +81,6 @@ frame = 3
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 occluder = SubResource( 72 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 71 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 73 )

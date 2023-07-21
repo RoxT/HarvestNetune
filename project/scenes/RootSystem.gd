@@ -1,5 +1,6 @@
 extends Area2D
 
+export(String, "BERRY", "PLASTBERRY") var berry_type = "BERRY"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,6 +10,9 @@ func _ready() -> void:
 
 func grow():
 	if get_node_or_null("Bush") == null:
-		add_child(preload("res://scenes/Bush.tscn").instance())
+		var bush  = preload("res://scenes/Bush.tscn").instance()
+		bush.berry_type = berry_type
+		add_child(bush)
+		
 		
 		
