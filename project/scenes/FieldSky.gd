@@ -12,8 +12,8 @@ enum times {
 	EVENING,
 	NIGHT
 }
+export(times) var time = times.DAY
 
-var time = times.DAY
 var s_so_far := 0
 var transition := 1/S_OF_TRANSITION
 

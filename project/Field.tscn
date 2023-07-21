@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/grasses.png" type="Texture" id=2]
+[ext_resource path="res://textures/normal_test.png" type="Texture" id=3]
 [ext_resource path="res://textures/cave_opening.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Bush.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/NPC.gd" type="Script" id=6]
@@ -26,6 +27,8 @@
 [ext_resource path="res://textures/Dig-Spot.png" type="Texture" id=25]
 [ext_resource path="res://scenes/RootSystem.tscn" type="PackedScene" id=26]
 [ext_resource path="res://textures/lamp.png" type="Texture" id=27]
+[ext_resource path="res://textures/normal_test2_normal.png" type="Texture" id=28]
+[ext_resource path="res://textures/dither-light.png" type="Texture" id=29]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grasses.png 0"
@@ -230,49 +233,63 @@ shape = SubResource( 82 )
 [node name="Sprite" type="Sprite" parent="DoorToCave"]
 texture = ExtResource( 4 )
 
-[node name="Light2D" type="Light2D" parent="." groups=["Light"]]
-position = Vector2( 1351, -248 )
+[node name="LightRoom" type="Light2D" parent="." groups=["Light"]]
+position = Vector2( 1366, -145 )
 texture = ExtResource( 9 )
 color = Color( 0.52549, 0.796078, 1, 1 )
 energy = 0.5
 shadow_enabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Sprite" type="Sprite" parent="Light2D"]
+[node name="Sprite" type="Sprite" parent="LightRoom"]
 texture = ExtResource( 27 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Light2D2" type="Light2D" parent="." groups=["Light"]]
-position = Vector2( 1060, -542 )
+[node name="Light2D" type="Light2D" parent="LightRoom"]
+position = Vector2( -31, -53 )
+texture = ExtResource( 29 )
+energy = 0.34
+
+[node name="Light2D2" type="Light2D" parent="LightRoom"]
+position = Vector2( 77, -13 )
+texture = ExtResource( 29 )
+energy = 0.34
+
+[node name="Light2D3" type="Light2D" parent="LightRoom"]
+position = Vector2( -27, 82 )
+texture = ExtResource( 29 )
+energy = 0.34
+
+[node name="LightRoom2" type="Light2D" parent="." groups=["Light"]]
+position = Vector2( 1474, -258 )
 texture = ExtResource( 9 )
-color = Color( 0, 0.952941, 1, 1 )
+color = Color( 0.52549, 0.796078, 1, 1 )
 energy = 0.5
 shadow_enabled = true
+
+[node name="Sprite" type="Sprite" parent="LightRoom2"]
+texture = ExtResource( 27 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Light2D2"]
-texture = ExtResource( 27 )
+[node name="Light2D" type="Light2D" parent="LightRoom2"]
+position = Vector2( -31, -53 )
+texture = ExtResource( 29 )
+energy = 0.34
 
-[node name="Light2D3" type="Light2D" parent="." groups=["Light"]]
-position = Vector2( 522, -316 )
-texture = ExtResource( 9 )
-color = Color( 0, 0.952941, 1, 1 )
-energy = 0.5
-shadow_enabled = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Light2D2" type="Light2D" parent="LightRoom2"]
+position = Vector2( 77, -13 )
+texture = ExtResource( 29 )
+energy = 0.34
 
-[node name="Sprite" type="Sprite" parent="Light2D3"]
-texture = ExtResource( 27 )
+[node name="Light2D3" type="Light2D" parent="LightRoom2"]
+position = Vector2( -27, 82 )
+texture = ExtResource( 29 )
+energy = 0.34
 
-[node name="Light2D4" type="Light2D" parent="." groups=["Light"]]
+[node name="LightWorkShop" type="Light2D" parent="." groups=["Light"]]
 position = Vector2( 1455, 514 )
 texture = ExtResource( 9 )
 color = Color( 0.52549, 0.796078, 1, 1 )
@@ -282,13 +299,14 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Light2D4"]
+[node name="Sprite" type="Sprite" parent="LightWorkShop"]
 position = Vector2( -324, -826 )
 texture = ExtResource( 27 )
 offset = Vector2( 324, 826 )
 
 [node name="FieldSky" type="CanvasModulate" parent="."]
 script = ExtResource( 16 )
+time = 2
 
 [node name="Timer" type="Timer" parent="FieldSky"]
 
@@ -366,6 +384,10 @@ position = Vector2( 1958, 569 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 768, -128 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+texture = ExtResource( 3 )
+normal_map = ExtResource( 28 )
 
 [node name="Gronk" type="KinematicBody2D" parent="." groups=["NPC"]]
 position = Vector2( 928, -464 )
