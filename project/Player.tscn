@@ -384,6 +384,7 @@ shape = SubResource( 68 )
 position = Vector2( 0, -28 )
 texture = ExtResource( 4 )
 energy = 0.8
+range_height = 10.0
 
 [node name="Pause" type="Timer" parent="."]
 one_shot = true

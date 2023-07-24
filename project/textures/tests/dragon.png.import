@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/normal_test2_normal.png-305c7f487917289b98220f650ed6a1a0.stex"
+path="res://.import/dragon.png-b449652288af71ca2947bb79e60f7882.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/normal_test2_normal.png"
-dest_files=[ "res://.import/normal_test2_normal.png-305c7f487917289b98220f650ed6a1a0.stex" ]
+source_file="res://textures/tests/dragon.png"
+dest_files=[ "res://.import/dragon.png-b449652288af71ca2947bb79e60f7882.stex" ]
 
 [params]
 
