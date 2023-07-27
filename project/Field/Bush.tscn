@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/Bush.gd" type="Script" id=1]
+[ext_resource path="res://Field/Bush.gd" type="Script" id=1]
 [ext_resource path="res://textures/bushes/redberrybush.png" type="Texture" id=2]
 [ext_resource path="res://textures/plant_explode.png" type="Texture" id=3]
 

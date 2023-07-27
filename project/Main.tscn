@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Field.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/DialogLayer.gd" type="Script" id=2]
-[ext_resource path="res://scenes/SceneController.gd" type="Script" id=3]
+[ext_resource path="res://common/DialogLayer.gd" type="Script" id=2]
+[ext_resource path="res://common/SceneController.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
-[ext_resource path="res://scenes/HUDLayer.gd" type="Script" id=5]
+[ext_resource path="res://Hud/HUDLayer.gd" type="Script" id=5]
 [ext_resource path="res://textures/tools/bone_femur.png" type="Texture" id=6]
 [ext_resource path="res://textures/tools/envelope.png" type="Texture" id=7]
 [ext_resource path="res://Hud/InventoryContainer.gd" type="Script" id=8]

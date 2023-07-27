@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func grow():
 	if get_node_or_null("Bush") == null:
-		var bush  = preload("res://scenes/Bush.tscn").instance()
+		var bush  = preload("res://Field/Bush.tscn").instance()
 		bush.berry_type = berry_type
 		add_child(bush)
 		

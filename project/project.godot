@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Bush",
 "language": "GDScript",
-"path": "res://scenes/Bush.gd"
+"path": "res://Field/Bush.gd"
 }, {
 "base": "Resource",
 "class": "WordsR",

@@ -4,6 +4,7 @@ extends CollisionObject2D
 export(Resource) var words_r # Words resource - Array of Strings
 var words:Array
 
+const EARLY_MORNING := "EARLY_MORNING"
 signal talk (messages)
 
 # Called when the node enters the scene tree for the first time.

@@ -1,9 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://textures/tools/shovel.png" type="Texture" id=1]
-[ext_resource path="res://scenes/ToolTable.gd" type="Script" id=2]
-[ext_resource path="res://scenes/ToolTip.gd" type="Script" id=3]
+[ext_resource path="res://Field/ToolTable.gd" type="Script" id=2]
+[ext_resource path="res://Field/ToolTip.gd" type="Script" id=3]
 [ext_resource path="res://resources/tooltip.tres" type="Theme" id=4]
+
 
 [sub_resource type="RectangleShape2D" id=85]
 extents = Vector2( 32, 32 )

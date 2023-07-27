@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://text/WordsR.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+words = [ "It's nice by the river" ]

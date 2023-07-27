@@ -7,12 +7,16 @@ export var S_OF_TRANSITION:float = 15
 const COLOR_TRANSITION := 0.5
 
 enum times {
-	MORNING,
-	DAY,
-	EVENING,
-	NIGHT
+	EARLY_MORNING,
+	LATE_MORNING,
+	EARLY_DAY,
+	LATE_DAY,
+	EARLY_EVENING,
+	LATE_EVENING,
+	EARLY_NIGHT
+	LATE_NIGHT
 }
-export(times) var time = times.DAY
+export(times) var time = times.LATE_DAY
 
 var s_so_far := 0
 var transition := 1/S_OF_TRANSITION
@@ -26,20 +30,35 @@ func _ready() -> void:
 
 func _on_Timer_timeout() -> void:
 	match time:
-		times.MORNING:
+		times.EARLY_MORNING:
 			color = color.lightened(1/S_OF_TRANSITION)
 			if is_next():
 				reset()
-		times.DAY:
+		times.LATE_MORNING:
+			color = color.lightened(1/S_OF_TRANSITION)
+			if is_next():
+				reset()
+		times.EARLY_DAY:
 			color = Color.white
+			if is_next():
+				reset()
+		times.LATE_DAY:
 			if is_next():
 				color = Color(1.0, 1.0-transition, 1.0-transition)
 				reset()
-		times.EVENING:
+		times.EARLY_EVENING:
 			color = color.darkened(1/S_OF_TRANSITION)
 			if is_next():
 				reset()
-		times.NIGHT:
+		times.LATE_EVENING:
+			color = color.darkened(1/S_OF_TRANSITION)
+			if is_next():
+				reset()
+		times.EARLY_NIGHT:
+			if is_next():
+				color = Color(color.r, color.g, color.b+transition)
+				reset()
+		times.LATE_NIGHT:
 			if is_next():
 				color = Color(color.r, color.g, color.b+transition)
 				reset()
@@ -52,7 +71,7 @@ func reset():
 	s_so_far = 0
 	time = (time+1)%times.size()
 	if !music.is_playing():
-		if randi() % 4 < 2:
+		if randi() % 8 < 2:
 			music.play()
 	emit_signal("time_change", time)
 
