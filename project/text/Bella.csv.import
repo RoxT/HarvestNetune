@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://text/Bella.en.translation" ]
+
+source_file="res://text/Bella.csv"
+dest_files=[ "res://text/Bella.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

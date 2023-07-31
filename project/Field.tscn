@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/grasses.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://text/Gronk.tres" type="Resource" id=10]
 [ext_resource path="res://common/Roof.gd" type="Script" id=11]
 [ext_resource path="res://lower-tileset.tres" type="TileSet" id=12]
-[ext_resource path="res://text/Bella.tres" type="Resource" id=13]
+[ext_resource path="res://NPCs/BellaPaths.gd" type="Script" id=13]
 [ext_resource path="res://common/DoorTo.gd" type="Script" id=14]
 [ext_resource path="res://music/waves.mp3" type="AudioStream" id=15]
 [ext_resource path="res://Field/FieldSky.gd" type="Script" id=16]
@@ -34,9 +34,10 @@
 [ext_resource path="res://textures/spot-light.png" type="Texture" id=32]
 [ext_resource path="res://textures/tests/dragon_normal.png" type="Texture" id=33]
 [ext_resource path="res://textures/tests/dragon.png" type="Texture" id=34]
-[ext_resource path="res://NPCs/Slime_Body.gd" type="Script" id=35]
+[ext_resource path="res://NPCs/TalkyBody.gd" type="Script" id=35]
 [ext_resource path="res://text/Slime_Night.tres" type="Resource" id=36]
 [ext_resource path="res://text/Slime_Day.tres" type="Resource" id=37]
+[ext_resource path="res://text/Bella.tres" type="Resource" id=38]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grasses.png 0"
@@ -95,6 +96,11 @@ _data = {
 [sub_resource type="CapsuleShape2D" id=92]
 radius = 27.0
 height = 0.0
+
+[sub_resource type="Curve2D" id=93]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 2645, -277, 0, 0, 0, 0, 2651, -127, 0, 0, 0, 0, 2667, 69, 0, 0, 0, 0, 1536, 73, 0, 0, 0, 0, 1536, 232, 0, 0, 0, 0, 1216, 192, 0, 0, 0, 0, 512, -256, 0, 0, 0, 0, 448, -640, 0, 0, 0, 0, -48, -1145, 0, 0, 0, 0, -199, -1209 )
+}
 
 [node name="Field" type="Node2D"]
 script = ExtResource( 19 )
@@ -494,47 +500,65 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gronk"]
 shape = SubResource( 70 )
 
-[node name="Bella" type="KinematicBody2D" parent="." groups=["NPC"]]
-position = Vector2( -192, -1152 )
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
-words_r = ExtResource( 13 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bella"]
-shape = SubResource( 70 )
-
-[node name="Sprite" type="Sprite" parent="Bella"]
-texture = ExtResource( 7 )
-hframes = 2
-vframes = 7
-
-[node name="Slime" type="Node" parent="."]
+[node name="SlimePaths" type="Node" parent="."]
 script = ExtResource( 28 )
+path_follow_value = NodePath("EARLY_MORNING/PathFollow2D")
+starting_path = NodePath("EARLY_MORNING")
 words_day = ExtResource( 37 )
 words_night = ExtResource( 36 )
 
-[node name="Path2D" type="Path2D" parent="Slime"]
+[node name="Path2D" type="Path2D" parent="SlimePaths"]
 curve = SubResource( 90 )
 
-[node name="EARLY_MORNING" type="Path2D" parent="Slime"]
+[node name="EARLY_MORNING" type="Path2D" parent="SlimePaths"]
 curve = SubResource( 91 )
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Slime/EARLY_MORNING"]
+[node name="PathFollow2D" type="PathFollow2D" parent="SlimePaths/EARLY_MORNING"]
+position = Vector2( 2792, -228 )
 rotate = false
 loop = false
 
-[node name="Slime" type="KinematicBody2D" parent="Slime/EARLY_MORNING/PathFollow2D"]
+[node name="Slime" type="KinematicBody2D" parent="SlimePaths/EARLY_MORNING/PathFollow2D"]
 script = ExtResource( 35 )
 
-[node name="Sprite" type="Sprite" parent="Slime/EARLY_MORNING/PathFollow2D/Slime"]
+[node name="Sprite" type="Sprite" parent="SlimePaths/EARLY_MORNING/PathFollow2D/Slime"]
 position = Vector2( 0, -33 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slime/EARLY_MORNING/PathFollow2D/Slime"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlimePaths/EARLY_MORNING/PathFollow2D/Slime"]
 position = Vector2( -1, -18 )
 shape = SubResource( 92 )
+
+[node name="BellaPaths" type="Node" parent="."]
+script = ExtResource( 13 )
+path_follow_value = NodePath("TO_FOREST/PathFollow2D")
+starting_path = NodePath("TO_FOREST")
+words_day = ExtResource( 38 )
+
+[node name="TO_FOREST" type="Path2D" parent="BellaPaths"]
+curve = SubResource( 93 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="BellaPaths/TO_FOREST"]
+position = Vector2( 2645, -277 )
+rotation = 1.89267
+rotate = false
+loop = false
+
+[node name="Bella" type="KinematicBody2D" parent="BellaPaths/TO_FOREST/PathFollow2D" groups=["NPC"]]
+rotation = -1.89267
+script = ExtResource( 35 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BellaPaths/TO_FOREST/PathFollow2D/Bella"]
+shape = SubResource( 70 )
+
+[node name="Sprite" type="Sprite" parent="BellaPaths/TO_FOREST/PathFollow2D/Bella"]
+texture = ExtResource( 7 )
+flip_h = true
+hframes = 2
+vframes = 7
 
 [connection signal="body_entered" from="Town/Roof/Area2D" to="Town/Roof" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Town/Roof/Area2D" to="Town/Roof" method="_on_Area2D_body_exited"]

@@ -103,6 +103,10 @@ toggle_menu={
 2d_physics/layer_2="Weapon"
 2d_physics/layer_3="Raycast only"
 
+[locale]
+
+translations=PoolStringArray( "res://text/Bella.en.translation" )
+
 [physics]
 
 common/enable_pause_aware_picking=true
