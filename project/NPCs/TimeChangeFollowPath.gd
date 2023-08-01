@@ -38,6 +38,10 @@ func _physics_process(delta: float) -> void:
 		stop = path_follow.unit_offset != 0
 	set_physics_process(stop)
 
+func sleep():
+	path_follow.offset = 0
+	set_physics_process(false)
+
 func add_group(method:String, group:String):
 	if has_method(method):
 		if !is_in_group(group):

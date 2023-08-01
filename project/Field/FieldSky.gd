@@ -20,6 +20,7 @@ export(times) var time = times.LATE_DAY
 
 var s_so_far := 0
 var transition := 1/S_OF_TRANSITION
+var morning_light := Color(color.r, color.g, color.b+transition)
 
 signal time_change(new_time)
 
@@ -60,16 +61,16 @@ func _on_Timer_timeout() -> void:
 				reset()
 		times.LATE_NIGHT:
 			if is_next():
-				color = Color(color.r, color.g, color.b+transition)
+				color = morning_light
 				reset()
 	s_so_far +=1 
 
 func is_next()->bool:
 	return s_so_far >= S_OF_TRANSITION
 
-func reset():
+func reset(new_time=(time+1)%times.size()):
+	time = new_time
 	s_so_far = 0
-	time = (time+1)%times.size()
 	if !music.is_playing():
 		if randi() % 8 < 2:
 			music.play()
@@ -80,7 +81,6 @@ func _on_FieldSky_visibility_changed() -> void:
 		timer.start()
 	else:
 		timer.stop()
-		
 
 
 func _on_AudioStreamPlayer_finished() -> void:

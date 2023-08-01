@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 onready var text:RichTextLabel = $Panel/Text
+onready var label:Label = $Panel/Label
 export(Array, String) var messages
 
 signal talked
@@ -20,10 +21,11 @@ func _input(event: InputEvent) -> void:
 		get_tree().set_input_as_handled()
 		next()
 
-func show_dialog(new_messages:Array):
+func show_dialog(new_messages:Array, header:String):
 	show()
 	set_process_input(true)
 	messages = new_messages
+	label.text = header
 	next()
 	
 func next():

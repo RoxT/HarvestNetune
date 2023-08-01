@@ -27,8 +27,8 @@ func _ready() -> void:
 		if e != OK: push_error(str(e))
 	$Debug.visible = OS.has_virtual_keyboard()
 
-func _on_talk(messages:Array):
-	dialog.show_dialog(messages)
+func _on_talk(messages:Array, header:String):
+	dialog.show_dialog(messages, header)
 
 func _on_talked():
 	player.stop_talking()
@@ -90,10 +90,12 @@ func connect_player(disconnect:=false)->Array:
 		player.disconnect("ate", self, "_on_ate")
 		player.disconnect("tool_picked_up", self, "_on_tool_picked_up")
 		player.disconnect("add_to_inventory", self, "_on_add_to_inventory")
+		player.disconnect("bed", self, "_on_Player_bed")
 	else:
 		errs.append(player.connect("ate", self, "_on_ate"))
 		errs.append(player.connect("tool_picked_up", self, "_on_tool_picked_up"))
 		errs.append(player.connect("add_to_inventory", self, "_on_add_to_inventory"))
+		errs.append(player.connect("bed", self, "_on_Player_bed"))
 	return errs
 	
 func _on_add_to_inventory(item:String):
@@ -102,6 +104,15 @@ func _on_add_to_inventory(item:String):
 	else:
 		inventory[item] = 1
 
+func _on_Player_bed():
+	$HUDLayer/ColorRect/AnimationPlayer.play("sleep")
+
+func sleep():
+	get_tree().call_group("Paths", "sleep")
+	$Field/FieldSky.color = $Field/FieldSky.morning_light
+	$Field/FieldSky.call_deferred("reset", 0)
+
+	
 
 func _on_InventoryButton_toggled(button_pressed: bool) -> void:
 	player.pause_override = button_pressed

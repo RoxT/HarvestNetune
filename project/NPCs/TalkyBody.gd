@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var words:Array
 
-signal talk (messages)
+signal talk (messages, header)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,4 +13,4 @@ func flip(value:bool):
 	$Sprite.flip_h = value
 
 func talk():
-	emit_signal("talk", words.duplicate())
+	emit_signal("talk", words.duplicate(), name)

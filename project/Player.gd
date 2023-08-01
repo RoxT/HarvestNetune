@@ -22,6 +22,7 @@ var parent_placeholder:Node2D
 signal ate
 signal add_to_inventory(item)
 signal tool_picked_up(tool_name)
+signal bed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -108,6 +109,8 @@ func _unhandled_input(event: InputEvent) -> void:
 							item_held_on_head = null
 						elif tool_in_hand == "shovel":
 							target.add_child(load("res://scenes/Bush.tscn").instance())
+					elif target.name == "Bed":
+						emit_signal("bed")
 				else:
 					if !item_held_on_head == null:
 						item_held_on_head.toss(direction)

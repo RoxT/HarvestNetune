@@ -9,8 +9,7 @@ export(Resource) var words_night # Words resource - Array of Strings
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	forward = true
-	
-	
+	body.words = words_night.words
 	assert(words_day)
 	assert(words_night)
 	

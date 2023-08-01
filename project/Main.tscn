@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Field.tscn" type="PackedScene" id=1]
 [ext_resource path="res://common/DialogLayer.gd" type="Script" id=2]
@@ -17,6 +17,51 @@ pressed = true
 [sub_resource type="ShortCut" id=2]
 shortcut = SubResource( 1 )
 
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "sleep"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0.0392157, 0, 0.12549, 1 ), Color( 0, 0, 0.12549, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "sleep"
+} ]
+}
+
 [node name="SceneController" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -30,9 +75,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -136.0
 
+[node name="Label" type="Label" parent="DialogLayer/Panel"]
+margin_right = 50.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0.866667, 0.984314, 1 )
+text = "Header:"
+
 [node name="Text" type="RichTextLabel" parent="DialogLayer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 23.0
 
 [node name="Field" parent="." instance=ExtResource( 1 )]
 
@@ -96,6 +148,16 @@ margin_right = -102.0
 margin_bottom = 100.0
 theme = ExtResource( 9 )
 script = ExtResource( 8 )
+
+[node name="ColorRect" type="ColorRect" parent="HUDLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer/ColorRect"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 3 )
+anims/sleep = SubResource( 4 )
 
 [connection signal="famished" from="HUDLayer" to="." method="_on_HUDLayer_famished"]
 [connection signal="hungry" from="HUDLayer" to="." method="_on_HUDLayer_hungry"]
