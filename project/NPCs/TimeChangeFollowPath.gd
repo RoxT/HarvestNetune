@@ -3,6 +3,7 @@ extends Node
 const EARLY_MORNING := "EARLY_MORNING"
 const EARLY_DAY := "EARLY_DAY" 
 const LATE_EVENING := "LATE_EVENING"
+const EARLY_NIGHT := "EARLY_NIGHT"
 
 var speed := 100
 var forward := true
@@ -24,6 +25,7 @@ func _ready() -> void:
 	add_group("on_early_morning", EARLY_MORNING)
 	add_group("on_early_day", EARLY_DAY)
 	add_group("on_late_evening", LATE_EVENING)
+	add_group("on_early_night", EARLY_NIGHT)
 	set_physics_process(false)
 	
 func _physics_process(delta: float) -> void:
@@ -48,13 +50,13 @@ func move_body(new:Path2D):
 	
 func get_trs(key:String):
 	var words_set := []
-	var i := 1
-	for j in 10:
-		var new_words = tr(key + str(i))
-		if new_words == key + str(i):
-			if words_set.empty(): push_warning(key + " produced no text")
+	for j in range(1,10):
+		var new_words = tr(key + str(j))
+		if new_words == key + str(j):
+			if words_set.empty(): 
+				push_warning(key + " produced no text")
+				words_set.append(new_words)
 			return words_set
-		else:
-			words_set.append(new_words)
-	push_error("Tranlation loop went higher than 10")
+		words_set.append(new_words)
+	push_error("Translation loop went higher than 10")
 	

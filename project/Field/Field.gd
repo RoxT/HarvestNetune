@@ -19,18 +19,17 @@ func _ready() -> void:
 func _on_FieldSky_time_change(new_time) -> void:
 	match new_time:
 		sky.times.EARLY_MORNING:
+			print(". - * Morning * - .")
 			get_tree().call_group("EARLY_MORNING", "on_early_morning")
 		sky.times.LATE_MORNING:
 			get_tree().call_group("Light", "set_enabled", false)
 			get_tree().call_group("LATE_MORNING", "on_late_morning")
+			get_tree().call_group("Grows", "grow")
+		sky.times.EARLY_DAY:
+			get_tree().call_group("EARLY_DAY", "on_early_day")
 		sky.times.LATE_EVENING:
 			get_tree().call_group("Light", "set_enabled", true)
 			get_tree().call_group("LATE_EVENING", "on_late_evening")
-		sky.times.EARLY_DAY:
-			get_tree().call_group("EARLY_DAY", "on_early_day")
-		sky.times.LATE_MORNING:
-			print(". - * Morning * - .")
-			get_tree().call_group("Grows", "grow")
-
-func on_early_morning():
-	pass
+		sky.times.EARLY_NIGHT:
+			get_tree().call_group("EARLY_NIGHT", "on_early_night")
+			

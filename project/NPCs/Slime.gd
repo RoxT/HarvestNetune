@@ -15,12 +15,12 @@ func _ready() -> void:
 	assert(words_night)
 	
 	
-func on_early_morning():
+func on_early_day():
 	set_physics_process(true)
 	forward = true
 	body.words = words_day.words
 
-func on_early_day():
+func on_early_night():
 	set_physics_process(true)
 	forward = false
 	body.words = words_night.words

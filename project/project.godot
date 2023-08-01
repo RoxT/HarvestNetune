@@ -105,7 +105,8 @@ toggle_menu={
 
 [locale]
 
-translations=PoolStringArray( "res://text/Bella.en.translation" )
+translations=PoolStringArray( "res://text/Bella.en.translation", "res://text/TrTest.en.translation", "res://text/Baz.en.translation" )
+locale_filter=[ 0, [ "en" ] ]
 
 [physics]
 

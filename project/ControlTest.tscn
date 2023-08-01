@@ -29,3 +29,24 @@ margin_bottom = 108.0
 focus_neighbour_top = NodePath("../Button")
 disabled = true
 text = "Gear"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 195.0
+margin_top = 5.0
+margin_right = 300.0
+margin_bottom = 19.0
+text = "HELLO"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 195.0
+margin_top = 21.0
+margin_right = 300.0
+margin_bottom = 35.0
+text = "BELLA_NIGHT2"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 195.0
+margin_top = 41.0
+margin_right = 300.0
+margin_bottom = 55.0
+text = "BELLA_NIGHT1"
