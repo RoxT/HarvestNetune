@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://textures/grasses.png" type="Texture" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://text/Bella.tres" type="Resource" id=38]
 [ext_resource path="res://textures/basilisk.png" type="Texture" id=39]
 [ext_resource path="res://NPCs/BazPaths.gd" type="Script" id=40]
+[ext_resource path="res://textures/turtle.png" type="Texture" id=41]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grasses.png 0"
@@ -77,7 +78,7 @@ extents = Vector2( 192.5, 160.5 )
 extents = Vector2( 29.5, 30 )
 
 [sub_resource type="RectangleShape2D" id=82]
-extents = Vector2( 24, 27.75 )
+extents = Vector2( 30.5, 95 )
 
 [sub_resource type="RectangleShape2D" id=87]
 extents = Vector2( 28.5, 28.5 )
@@ -487,6 +488,35 @@ shape = SubResource( 87 )
 texture = ExtResource( 25 )
 centered = false
 
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 1280, 2259 )
+
+[node name="DoorToRoad" type="Area2D" parent="." groups=["Doors"]]
+position = Vector2( 1121, 2236 )
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+door_to = "res://RoadWest/RoadWest.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToRoad"]
+position = Vector2( 5.5, 35 )
+shape = SubResource( 82 )
+
+[node name="Turtle" type="Sprite" parent="DoorToRoad"]
+position = Vector2( -164, 57 )
+texture = ExtResource( 41 )
+
+[node name="Turtle2" type="Sprite" parent="DoorToRoad"]
+position = Vector2( -225, -18 )
+texture = ExtResource( 41 )
+flip_h = true
+
+[node name="Turtle3" type="Sprite" parent="DoorToRoad"]
+position = Vector2( -126, -58 )
+texture = ExtResource( 41 )
+flip_h = true
+
 [node name="Bike" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1958, 569 )
 
@@ -600,3 +630,4 @@ texture = ExtResource( 39 )
 [connection signal="visibility_changed" from="FieldSky" to="FieldSky" method="_on_FieldSky_visibility_changed"]
 [connection signal="timeout" from="FieldSky/Timer" to="FieldSky" method="_on_Timer_timeout"]
 [connection signal="finished" from="FieldSky/AudioStreamPlayer" to="FieldSky" method="_on_AudioStreamPlayer_finished"]
+[connection signal="body_entered" from="DoorToRoad" to="DoorToRoad" method="_on_DoorToCave_body_entered"]

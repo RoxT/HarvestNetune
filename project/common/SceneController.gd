@@ -9,18 +9,22 @@ onready var HUD := $HUDLayer
 var active_scene:Node2D
 
 var inventory := {}
+var bike_pos:Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	active_scene = $Field
+	bike_pos = active_scene.get_node("Bike").position
 	var errs := []
 	for npc in get_tree().get_nodes_in_group("NPC"):
 		errs.append(npc.connect("talk", self, "_on_talk"))
 	errs.append(dialog.connect("talked", self, "_on_talked"))
-	errs.append($Field/DoorToCave.connect("door_entered", self, "_on_DoorTo_door_entered"))
+	for n in get_tree().get_nodes_in_group("Doors"):
+		errs.append(n.connect("door_entered", self, "_on_DoorTo_door_entered"))
+		print(n.name + " connected from " + active_scene.name)
 	errs.append_array(connect_player())
 	for e in errs:
 		if e != OK: push_error(str(e))
-	active_scene = $Field
 	$Debug.visible = OS.has_virtual_keyboard()
 
 func _on_talk(messages:Array):
@@ -49,6 +53,9 @@ func _setup_scene():
 	errs.append_array(connect_player())
 	for e in errs:
 		if e != OK: push_error(str(e))
+	var bike:KinematicBody2D = active_scene.get_node_or_null("Bike")
+	if bike != null:
+		bike.set_deferred("position", bike_pos)
 	
 
 func _on_DoorTo_door_entered(target_scene_path:String, coordinates:Vector2) -> void:

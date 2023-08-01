@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Bike_Stats",
+"language": "GDScript",
+"path": "res://common/BikeR.gd"
+}, {
 "base": "StaticBody2D",
 "class": "Bush",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://text/WordsR.gd"
 } ]
 _global_script_class_icons={
+"Bike_Stats": "",
 "Bush": "",
 "WordsR": ""
 }

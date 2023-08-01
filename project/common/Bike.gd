@@ -10,12 +10,22 @@ const MAX_SPEED := 15
 const ACCELERATION := 0.3
 var speed := 0.0
 var last_dir
+var stats:Bike_Stats
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	stats = Bike_Stats.new()
+	stats.last_pos = position
 	if get_node_or_null("Debug") != null:
 		$Debug.queue_free()
 	set_physics_process(false)
+
+func _enter_tree() -> void:
+	if stats != null:
+		position = stats.last_pos
+
+func _exit_tree() -> void:
+	stats.last_pos = position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
