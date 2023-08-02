@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-words = [ "Hey, you must be new here. I'm Gronk. Your bike broke down? We don't have a lot of parts here, sorry.", "You might be here awhile, there's some berries you can grab fom he bushes over there. If you water them they regrow pretty fast. Pretty impressive" ]
+words = [ "Hey, you must be new here. I'm Gronk. Your bike broke down? We don't have a lot of parts here, sorry.", "You might be here awhile, there's some berries you can grab fom he bushes over there. They regrow pretty fast. Pretty impressive" ]
