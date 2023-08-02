@@ -91,11 +91,13 @@ func connect_player(disconnect:=false)->Array:
 		player.disconnect("tool_picked_up", self, "_on_tool_picked_up")
 		player.disconnect("add_to_inventory", self, "_on_add_to_inventory")
 		player.disconnect("bed", self, "_on_Player_bed")
+		player.disconnect("craft", self, "_on_Player_craft")
 	else:
 		errs.append(player.connect("ate", self, "_on_ate"))
 		errs.append(player.connect("tool_picked_up", self, "_on_tool_picked_up"))
 		errs.append(player.connect("add_to_inventory", self, "_on_add_to_inventory"))
 		errs.append(player.connect("bed", self, "_on_Player_bed"))
+		errs.append(player.connect("craft", self, "_on_Player_craft"))
 	return errs
 	
 func _on_add_to_inventory(item:String):
@@ -103,6 +105,13 @@ func _on_add_to_inventory(item:String):
 		inventory[item] += 1
 	else:
 		inventory[item] = 1
+
+func _on_remove_from_inventory(item, count) -> void:
+	if inventory.has(item):
+		inventory[item] -= count
+		
+	else:
+		push_error("Tried to remove " + item + "but there is none")
 
 func _on_Player_bed():
 	$HUDLayer/ColorRect/AnimationPlayer.play("sleep")
@@ -112,6 +121,11 @@ func sleep():
 	$Field/FieldSky.color = $Field/FieldSky.morning_light
 	$Field/FieldSky.call_deferred("reset", 0)
 
+func _on_Player_craft():
+	$HUDLayer/InventoryButton.pressed = true
+	$HUDLayer/InventoryContainer.set_inventory_crafting(inventory)
+	$CraftLayer.show()
+	player.pause_override = true
 	
 
 func _on_InventoryButton_toggled(button_pressed: bool) -> void:
@@ -121,3 +135,19 @@ func _on_InventoryButton_toggled(button_pressed: bool) -> void:
 		container.inventory = inventory
 	else:
 		container.inventory = {}
+		$CraftLayer.hide()
+
+func _on_InventoryContainer_craft(item, count, craft) -> void:
+	if inventory.has(item):
+		inventory[item] -= count
+		_on_add_to_inventory(craft)
+		$HUDLayer/InventoryContainer.set_inventory_crafting(inventory)
+		
+	else:
+		push_error("Tried to remove " + item + "but there is none")
+		assert(false)
+
+
+func _on_InventoryContainer_use(item, action) -> void:
+	inventory[item] -= 1
+	$HUDLayer/InventoryContainer.inventory = inventory

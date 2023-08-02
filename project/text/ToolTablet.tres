@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-words = [ "Pick up a tool with Select. One tool can be carried at a time" ]
+words = [ "Pick up a tool with Select. One tool can be carried at a time.  Shovel: Use the shovel to uproot bush and replant them in dirt squares.  Wrench: Use to fix vehicles. You may need extra parts" ]

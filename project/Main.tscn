@@ -159,7 +159,31 @@ root_node = NodePath("../..")
 anims/RESET = SubResource( 3 )
 anims/sleep = SubResource( 4 )
 
+[node name="CraftLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="CraftLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = 4.0
+margin_right = 232.0
+margin_bottom = 91.0
+
+[node name="Label" type="Label" parent="CraftLayer/Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Craft:
+PIE - 3 Red Berries
+MINI DRIVE - 10 Plastberries
+
+\"Space\" to use item in inventory, \"tab\" to close"
+
 [connection signal="famished" from="HUDLayer" to="." method="_on_HUDLayer_famished"]
 [connection signal="hungry" from="HUDLayer" to="." method="_on_HUDLayer_hungry"]
 [connection signal="timeout" from="HUDLayer/Food/Timer" to="HUDLayer" method="_on_Food_Timer_timeout"]
 [connection signal="toggled" from="HUDLayer/InventoryButton" to="." method="_on_InventoryButton_toggled"]
+[connection signal="craft" from="HUDLayer/InventoryContainer" to="." method="_on_InventoryContainer_craft"]
+[connection signal="use" from="HUDLayer/InventoryContainer" to="." method="_on_InventoryContainer_use"]

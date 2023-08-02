@@ -66,7 +66,6 @@ func _physics_process(_delta: float) -> void:
 			
 		Vector2.ZERO:
 			speed = speed - ACCELERATION
-			direction
 	
 	speed = clamp(speed, 0, MAX_SPEED)
 	if speed > 0:

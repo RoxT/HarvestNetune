@@ -23,6 +23,7 @@ signal ate
 signal add_to_inventory(item)
 signal tool_picked_up(tool_name)
 signal bed
+signal craft
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -111,6 +112,8 @@ func _unhandled_input(event: InputEvent) -> void:
 							target.add_child(load("res://scenes/Bush.tscn").instance())
 					elif target.name == "Bed":
 						emit_signal("bed")
+					elif target.name == "Combiner":
+						emit_signal("craft")
 				else:
 					if !item_held_on_head == null:
 						item_held_on_head.toss(direction)

@@ -5,7 +5,7 @@ export(Resource) var words_r # Words resource - Array of Strings
 var words:Array
 
 const EARLY_MORNING := "EARLY_MORNING"
-signal talk (messages)
+signal talk (messages, header)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 func talk():
 	words_r  = words_r as WordsR
 	words = words_r.words
-	emit_signal("talk", words.duplicate())
+	emit_signal("talk", words.duplicate(), name)
 
 func flip(value:bool):
 	$Sprite.flip_h = value

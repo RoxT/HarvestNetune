@@ -3,4 +3,5 @@
 [ext_resource path="res://resources/stylebox_hover.tres" type="StyleBox" id=1]
 
 [resource]
+Button/colors/font_color_disabled = Color( 0.729412, 0.729412, 0.729412, 1 )
 Button/styles/focus = ExtResource( 1 )
