@@ -17,6 +17,7 @@ func _get_configuration_warning() -> String:
 		return ""
 
 
-func _on_DoorToCave_body_entered(_body: Node) -> void:
+func _on_DoorToCave_body_entered(body: CollisionObject2D) -> void:
 	if door_to == null and warp_to == null: push_warning(name + " has no destination")
+	body.position.x += 64
 	emit_signal("door_entered", door_to, warp_to)

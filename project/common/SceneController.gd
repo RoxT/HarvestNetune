@@ -9,12 +9,17 @@ onready var HUD := $HUDLayer
 var active_scene:Node2D
 
 var inventory := {}
-var bike_pos:Vector2
+
+const PATH := "user://SaveData"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var save_dir = Directory.new()
+	if !save_dir.dir_exists("user://SaveData"):
+		var err = save_dir.make_dir(PATH)
+		if err != OK:
+			push_error("Could not make SaveData: " + str(err))
 	active_scene = $Field
-	bike_pos = active_scene.get_node("Bike").position
 	var errs := []
 	for npc in get_tree().get_nodes_in_group("NPC"):
 		errs.append(npc.connect("talk", self, "_on_talk"))
@@ -32,6 +37,23 @@ func _on_talk(messages:Array, header:String):
 
 func _on_talked():
 	player.stop_talking()
+	
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("home"):
+		get_tree().set_input_as_handled()
+		var bike_loc := ResourceLoader.load("user://SaveData/Bike.tres") as SaveRes
+		var where_is_bike = bike_loc.data["last_scene"]
+		if where_is_bike == active_scene.name:
+			_on_DoorTo_door_entered("", bike_loc.last_pos)
+		else:
+			if where_is_bike == "Field":
+				_on_DoorTo_door_entered("res://Field.tscn", bike_loc.last_pos)
+			elif where_is_bike == "RoadWest":
+				_on_DoorTo_door_entered("res://Field.tscn", bike_loc.last_pos)
+	elif event.is_action_pressed("ui_cancel"):
+		var window := $HUDLayer/Help
+		window.visible = !window.visible
+			
 
 func _cleanup_scene():
 	get_tree().call_group("NPC", "disconnect", "talk", self, "_on_talk")
@@ -53,9 +75,6 @@ func _setup_scene():
 	errs.append_array(connect_player())
 	for e in errs:
 		if e != OK: push_error(str(e))
-	var bike:KinematicBody2D = active_scene.get_node_or_null("Bike")
-	if bike != null:
-		bike.set_deferred("position", bike_pos)
 	
 
 func _on_DoorTo_door_entered(target_scene_path:String, coordinates:Vector2) -> void:

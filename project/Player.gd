@@ -128,9 +128,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				var obs = ray.get_collider()
 				if obs != null:
 					print(obs.name + " is in the way")
-					var wh = load("res://scenes/Whisper.tscn").instance()
+					var wh = load("res://common/Whisper.tscn").instance()
 					add_child(wh)
-					wh.get_node("AnimationPlayer").play("go")
+					wh.get_node("AnimationPlayer").play("run")
 				else:
 					bike.remove_child(self)
 					position = bike.position + Vector2(-64, 0)
