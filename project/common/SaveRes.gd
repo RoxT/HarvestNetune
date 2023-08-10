@@ -17,10 +17,11 @@ func _init(new_name:="", new_pos:=bad_pos, new_data:={}) -> void:
 	data = new_data
 	
 func save():
-	var err := ResourceSaver.save(path(obj_name), self)
-	if err != OK:
-		push_error("Error Saving " + obj_name + ": " + str(err))
-		assert(false)
+	pass
+	#var err := ResourceSaver.save(path(obj_name), self)
+	#if err != OK:
+#		push_error("Error Saving " + obj_name + ": " + str(err))
+#		assert(false)
 
 static func load_save(get_obj_name:String):
 	if ResourceLoader.exists(path(get_obj_name)):

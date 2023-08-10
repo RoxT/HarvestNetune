@@ -409,6 +409,7 @@ position = Vector2( -0.5, 0 )
 shape = SubResource( 86 )
 
 [node name="Combiner" parent="Town" instance=ExtResource( 43 )]
+position = Vector2( -1455, 518 )
 
 [node name="Dragon" type="Sprite" parent="."]
 position = Vector2( 2022, -367 )
